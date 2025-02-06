@@ -1,0 +1,30 @@
+{
+  "form": {
+    "title": "Paste your password, secret message, or private link below",
+    "subtitle": "Do not store any confidential information in your emails or chat threads.",
+    "labels": {
+      "content": "Your secret content should be pasted here:",
+      "password": "Password:",
+      "lifetime": "Lifetime:",
+      "usageLimit": "Usage limit:",
+      "submit": "Create a secret link",
+      "lifetimeTypes": {
+        "minutes": "Minutes",
+        "hours": "Hours",
+        "days": "Days",
+        "weeks": "Weeks",
+        "months": "Months"
+      }
+    }
+  },
+  "doc": {
+    "whatIsIt": {
+      "title": "What is Secret Manager?",
+      "content": "Secret Manager is a secure management solution for your secrets, passwords, and other sensitive information. It allows you to store your confidential data safely and share it securely with your colleagues or friends."
+    },
+    "howToUse": {
+      "title": "How does it work?",
+      "content": "To use Secret Manager, start by entering your confidential information in the designated field. Then, set a password, a validity period, and/or a usage limit according to your needs. Once these settings are configured, click on \"Create a secret link\" to generate a secure link. This link can be shared with your colleagues or friends, who will be able to access your content by clicking on the link and entering the password."
+    }
+  }
+}

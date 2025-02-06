@@ -1,0 +1,30 @@
+{
+  "form": {
+    "title": "Collez votre mot de passe, message secret ou lien privé ci-dessous",
+    "subtitle": "Ne stockez aucune information confidentielle dans vos emails ou fils de discussion.",
+    "labels": {
+      "content": "Votre contenu secret est à coller ici:",
+      "password": "Mot de passe:",
+      "lifetime": "Durée de vie:",
+      "usageLimit": "Limite d'utilisation:",
+      "submit": "Créer un lien secret",
+      "lifetimeTypes": {
+        "minutes": "Minutes",
+        "hours": "Heures",
+        "days": "Jours",
+        "weeks": "Semaines",
+        "months": "Mois"
+      }
+    }
+  },
+  "doc": {
+    "whatIsIt": {
+      "title": "Qu'est-ce que Secret Manager ?",
+      "content": "Secret Manager est une solution de gestion sécurisée pour vos secrets, mots de passe et autres informations sensibles. Elle vous permet de stocker vos données confidentielles en toute sécurité et de les partager avec vos collaborateurs ou amis de manière sécurisée."
+    },
+    "howToUse": {
+      "title": "Comment ca fonctionne ?",
+      "content": "Pour utiliser Secret Manager, commencez par insérer votre information confidentielle dans le champ dédié. Ensuite, configurez un mot de passe, une durée de validité et/ou une limite d'utilisation selon vos besoins. Une fois ces paramètres définis, cliquez sur \"Créer un lien secret\" pour générer un lien sécurisé. Ce lien peut être partagé avec vos collaborateurs ou amis, qui pourront accéder à votre contenu en cliquant sur le lien et en entrant le mot de passe."
+    }
+  }
+}
