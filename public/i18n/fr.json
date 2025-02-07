@@ -26,5 +26,34 @@
       "title": "Comment ca fonctionne ?",
       "content": "Pour utiliser Secret Manager, commencez par insérer votre information confidentielle dans le champ dédié. Ensuite, configurez un mot de passe, une durée de validité et/ou une limite d'utilisation selon vos besoins. Une fois ces paramètres définis, cliquez sur \"Créer un lien secret\" pour générer un lien sécurisé. Ce lien peut être partagé avec vos collaborateurs ou amis, qui pourront accéder à votre contenu en cliquant sur le lien et en entrant le mot de passe."
     }
+  },
+  "modal": {
+    "title": "Votre secret a été créé !",
+    "content": "Votre secret a été créé avec succès. Vous pouvez maintenant partager le lien ci-dessous avec vos collaborateurs ou amis. N'oubliez pas de leur communiquer le mot de passe pour qu'ils puissent accéder à votre contenu.",
+    "limits": {
+      "main": "Ce secret sera detruit",
+      "the": "le",
+      "at": "à",
+      "or": "ou",
+      "after": "apres",
+      "usages": "utilisations"
+    },
+    "buttons": {
+      "copy": "Copier le lien dans le presse-papier",
+      "close": "Fermer"
+    }
+  },
+  "read": {
+    "passwordPrompt": {
+      "title": "Mot de passe requis",
+      "subtitle": "Ce secret est protégé par un mot de passe. Si vous ne possez pas le mot de passe, veuillez demander à la personne qui vous a partagé ce secret de vous le communiquer.",
+      "password": "Mot de passe:",
+      "submit": "Accéder au contenu"
+    },
+    "secret": {
+      "invalidPassword": "Mot de passe invalide",
+      "title": "Voici le contenu de votre secret",
+      "clipboard": "Copier dans le presse-papier"
+    }
   }
 }

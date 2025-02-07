@@ -1,0 +1,39 @@
+@keyframes deform {
+  0% {
+    transform: scale(1, 1) rotate(0deg) translate(0%, 0%);;
+  }
+  10% {
+    transform: scale(1.2, 0.4) rotate(20deg) translate(7%, -7%);
+  }
+  20% {
+    transform: scale(1.1, -0.9) rotate(45deg) translate(5%, -5%);
+  }
+  30% {
+    transform: scale(1.1, 0.9) rotate(15deg) translate(25%, -25%);
+  }
+  40% {
+    transform: scale(0.8, 1.2) rotate(-100deg) translate(-20%, 20%);
+  }
+  50% {
+    transform: scale(1.4) rotate(0deg) translate(0%, 0%);
+  }
+  60% {
+    transform: rotate(-30deg) translate(-22%, 22%);
+  }
+  70% {
+    transform: scale(1) rotate(0deg) translate(0%, 0%);
+  }
+  80% {
+    transform: scale(-0.7, 1.2) rotate(-20deg) translate(-23%, 23%);
+  }
+  90% {
+    transform: scale(1.1, 0.9) rotate(100deg) translate(15%, -15%);
+  }
+  100% {
+    transform: scale(1, 1) rotate(0deg) translate(0%, 0%);
+  }
+}
+
+.deform {
+  animation: deform 580s infinite;
+}

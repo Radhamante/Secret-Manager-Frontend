@@ -3,10 +3,10 @@
     "title": "Paste your password, secret message, or private link below",
     "subtitle": "Do not store any confidential information in your emails or chat threads.",
     "labels": {
-      "content": "Your secret content should be pasted here:",
+      "content": "Your secret content goes here:",
       "password": "Password:",
       "lifetime": "Lifetime:",
-      "usageLimit": "Usage limit:",
+      "usageLimit": "Usage Limit:",
       "submit": "Create a secret link",
       "lifetimeTypes": {
         "minutes": "Minutes",
@@ -20,11 +20,40 @@
   "doc": {
     "whatIsIt": {
       "title": "What is Secret Manager?",
-      "content": "Secret Manager is a secure management solution for your secrets, passwords, and other sensitive information. It allows you to store your confidential data safely and share it securely with your colleagues or friends."
+      "content": "Secret Manager is a secure management solution for your secrets, passwords, and other sensitive information. It allows you to securely store your confidential data and share it with your colleagues or friends in a secure manner."
     },
     "howToUse": {
       "title": "How does it work?",
-      "content": "To use Secret Manager, start by entering your confidential information in the designated field. Then, set a password, a validity period, and/or a usage limit according to your needs. Once these settings are configured, click on \"Create a secret link\" to generate a secure link. This link can be shared with your colleagues or friends, who will be able to access your content by clicking on the link and entering the password."
+      "content": "To use Secret Manager, start by inserting your confidential information into the dedicated field. Then, set a password, expiration time, and/or usage limit as needed. Once these settings are defined, click \"Create a secret link\" to generate a secure link. This link can be shared with your colleagues or friends, who can access your content by clicking the link and entering the password."
+    }
+  },
+  "modal": {
+    "title": "Your secret has been created!",
+    "content": "Your secret has been successfully created. You can now share the link below with your colleagues or friends. Don't forget to provide them with the password so they can access your content.",
+    "limits": {
+      "main": "This secret will be destroyed",
+      "the": "the",
+      "at": "at",
+      "or": "or",
+      "after": "after",
+      "usages": "usages"
+    },
+    "buttons": {
+      "copy": "Copy the link to the clipboard",
+      "close": "Close"
+    }
+  },
+  "read": {
+    "passwordPrompt": {
+      "title": "Password required",
+      "subtitle": "This secret is protected by a password. If you do not have the password, please ask the person who shared this secret with you to provide it.",
+      "password": "Password:",
+      "submit": "Access content"
+    },
+    "secret": {
+      "invalidPassword": "Invalid password",
+      "title": "Here is the content of your secret",
+      "clipboard": "Copy to clipboard"
     }
   }
 }

@@ -5,7 +5,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 
-export function lifeTimeOrUsageValidator(): ValidatorFn {
+export function lifetimeOrUsageValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const form = control as FormGroup;
     const lifetime = form.get('lifetime')?.value;

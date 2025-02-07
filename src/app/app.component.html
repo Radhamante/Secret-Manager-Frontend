@@ -1,44 +1,9 @@
-<!-- <header>
-  <h1 class="text-3xl font-bold underline">Secret Manager</h1>
-  <h2>Collez votre pot de pass, message secret ou lien privé ce-dessous</h2>
-  <p>
-    Ne stockez aucune information confidentielle dans vos emails ou fils de
-    discussion.
-  </p>
-</header>
-<form>
-  <textarea name="secretContent" id="secretContent"></textarea>
-  <div>
-    <p>
-      <label>
-        Mot de passe
-        <input type="text" name="secretPassword" />
-      </label>
-    </p>
-    <p>
-      <label>
-        Durée de vie
-        <input type="number" name="secretLifetime" />
-      </label>
-    </p>
-    <p>
-      <label>
-        Limite d'utilisation
-        <input type="text" name="secretUsageLimite" />
-      </label>
-    </p>
-  </div>
-  <p>
-    <button name="">Créer un lien secret</button>
-  </p>
-</form> -->
-
-<div class="flex flex-col align-center h-screen overflow-auto lg:overflow-hidden">
+<div
+  class="flex flex-col align-center h-screen overflow-auto"
+>
   <app-header></app-header>
-  <div class="flex p-2 pt-5 mt-0 lg:mt-5 lg:pt-0 flex-col justify-evenly gap-20 lg:flex-row lg:gap-5 items-center">
-    <app-form></app-form>
-    <app-doc></app-doc>
-  </div>
-
+  <router-outlet></router-outlet>
   <app-background></app-background>
 </div>
+
+
