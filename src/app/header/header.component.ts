@@ -16,7 +16,9 @@ export class HeaderComponent {
   ];
   isOpen = false;
 
-  currentLanguage = this.languages[0]; // Langue par défaut
+  currentLanguage = this.languages.find(
+    (language) => language.code === localStorage.getItem('language')
+  );
 
   private translocoService = inject(TranslocoService);
   isDarkMode: boolean = localStorage.getItem('darkmode') == 'true';
@@ -25,11 +27,16 @@ export class HeaderComponent {
     if (this.isDarkMode) {
       document.body.classList.add('dark');
     }
+    if (!this.currentLanguage) {
+      this.currentLanguage = this.languages[0];
+      localStorage.setItem('language', this.currentLanguage.code);
+    }
   }
 
   changeLanguage(language: any) {
     this.translocoService.setActiveLang(language.code);
     this.currentLanguage = language;
+    localStorage.setItem('language', language.code);
     // Ajoutez ici la logique pour changer la langue de votre application
     console.log('Langue sélectionnée :', language.code);
   }

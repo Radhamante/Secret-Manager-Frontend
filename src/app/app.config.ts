@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideTransloco({
       config: {
         availableLangs: ['en', 'fr'],
-        defaultLang: 'fr',
+        defaultLang: localStorage.getItem('language') || 'fr',
         // Remove this option if your application doesn't support changing language in runtime.
         reRenderOnLangChange: true,
         prodMode: !isDevMode(),
