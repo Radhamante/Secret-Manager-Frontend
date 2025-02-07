@@ -18,6 +18,7 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { InputComponent } from './input/input.component';
 import { lifetimeOrUsageValidator } from './validators/lifetimeOrUsage.validator';
 import { CardDirective } from '../../shared/card.directive';
+import { RoundedInputDirective } from '../../shared/roundedInput.directive';
 
 @Component({
   selector: 'app-form',
@@ -30,7 +31,8 @@ import { CardDirective } from '../../shared/card.directive';
     TranslocoModule,
     SpinnerComponent,
     GradientDirective,
-    CardDirective
+    CardDirective,
+    RoundedInputDirective
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',

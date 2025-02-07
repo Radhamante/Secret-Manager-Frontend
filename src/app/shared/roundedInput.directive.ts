@@ -1,21 +1,24 @@
 import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[card]',
+  selector: '[roundedInput]',
 })
-export class CardDirective implements OnInit {
+export class RoundedInputDirective implements OnInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
     // Liste des classes à appliquer
     const classes = [
-      'bg-white',
-      'rounded-lg',
-      'shadow-lg',
-      'p-6',
-      'h-min',
-      'dark:bg-slate-900',
-      "dark:text-slate-300",
+      'border',
+      'border-gray-300',
+      'rounded-md',
+      'w-full',
+      'px-3',
+      'py-2',
+      'focus:outline-none',
+      'focus:ring-2',
+      'focus:ring-pink-400',
+      'dark:border-purple-800',
     ];
 
     // Ajouter chaque classe à l'élément

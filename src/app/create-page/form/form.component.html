@@ -1,13 +1,8 @@
-<form
-  (ngSubmit)="onSubmit()"
-  [formGroup]="secretForm"
-  card
-  class="max-w-lg"
->
+<form (ngSubmit)="onSubmit()" [formGroup]="secretForm" card class="max-w-lg">
   <h2 class="text-2xl font-bold mb-4">
     {{ "form.title" | transloco }}
   </h2>
-  <p class="text-gray-600 mb-4">
+  <p class="text-gray-600 dark:text-gray-500 mb-4">
     {{ "form.subtitle" | transloco }}
   </p>
 
@@ -18,7 +13,7 @@
         [class.border-red-500]="
           secretForm.get('content')?.invalid && secretFormSubmited
         "
-        class="border border-gray-300 rounded-md w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200"
+        roundedInput
         rows="5"
       ></textarea>
     </app-input>
@@ -29,7 +24,7 @@
           secretForm.get('password')?.invalid && secretFormSubmited
         "
         formControlName="password"
-        class="border border-gray-300 rounded-md w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200"
+        roundedInput
       />
     </app-input>
     <app-input [label]="'form.labels.lifetime' | transloco"
@@ -37,18 +32,20 @@
         type="number"
         [class.border-red-500]="secretForm.errors && secretFormSubmited"
         formControlName="lifetime"
-        class="flex-2 border border-gray-300 rounded-md w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200"
+        class="flex-2"
+        roundedInput
         min="0"
         value="0"
       />
       <select
         formControlName="lifetimeType"
         [class.border-red-500]="secretForm.errors && secretFormSubmited"
-        class="flex-1 border border-gray-300 rounded-md w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200"
+        class="flex-1"
+        roundedInput
       >
         @for(lifetimetype of SecretLifetimeType | keyvalue; track
         lifetimetype.key) {
-        <option [value]="lifetimetype.value">
+        <option [value]="lifetimetype.value" class="dark:bg-slate-900 dark:text-slate-300">
           {{
             "form.labels.lifetimeTypes." + (lifetimetype.key | lowercase)
               | transloco
@@ -62,7 +59,7 @@
         type="number"
         [class.border-red-500]="secretForm.errors && secretFormSubmited"
         formControlName="usageLimit"
-        class="border border-gray-300 rounded-md w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200"
+        roundedInput
       />
     </app-input>
   </div>

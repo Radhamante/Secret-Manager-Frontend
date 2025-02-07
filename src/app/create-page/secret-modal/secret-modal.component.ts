@@ -3,10 +3,11 @@ import { Component, inject } from '@angular/core';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { SecretModalService } from '../../services/secret-modal.service';
 import { GradientDirective } from '../../shared/gradient-button.directive';
+import { CardDirective } from '../../shared/card.directive';
 
 @Component({
   selector: 'app-secret-modal',
-  imports: [AsyncPipe, GradientDirective, TranslocoPipe, DatePipe],
+  imports: [AsyncPipe, GradientDirective, TranslocoPipe, DatePipe, CardDirective],
   templateUrl: './secret-modal.component.html',
   styleUrl: './secret-modal.component.scss',
 })
