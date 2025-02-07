@@ -4,10 +4,11 @@ import { SecretComponent } from './secret/secret.component';
 import { ApiService } from '../services/api.service';
 import { SecretWithContent } from '../models/secret-with-content.models';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CardDirective } from '../shared/card.directive';
 
 @Component({
   selector: 'app-read-page',
-  imports: [PasswordPromptComponent, SecretComponent],
+  imports: [PasswordPromptComponent, SecretComponent, CardDirective],
   templateUrl: './read-page.component.html',
   styleUrl: './read-page.component.scss',
 })

@@ -14,7 +14,6 @@ import { CardDirective } from '../../shared/card.directive';
     SpinnerComponent,
     GradientDirective,
     FormsModule,
-    CardDirective
   ],
   templateUrl: './password-prompt.component.html',
   styleUrl: './password-prompt.component.scss',

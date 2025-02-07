@@ -13,7 +13,6 @@ export class CardDirective implements OnInit {
       'rounded-lg',
       'shadow-lg',
       'p-6',
-      'max-w-md',
       'h-min',
     ];
 
