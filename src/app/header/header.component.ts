@@ -18,7 +18,7 @@ export class HeaderComponent {
 
   currentLanguage = this.languages.find(
     (language) => language.code === localStorage.getItem('language')
-  );
+  ) || this.languages[0];
 
   private translocoService = inject(TranslocoService);
   isDarkMode: boolean = localStorage.getItem('darkmode') == 'true';
@@ -26,10 +26,6 @@ export class HeaderComponent {
   constructor() {
     if (this.isDarkMode) {
       document.body.classList.add('dark');
-    }
-    if (!this.currentLanguage) {
-      this.currentLanguage = this.languages[0];
-      localStorage.setItem('language', this.currentLanguage.code);
     }
   }
 
