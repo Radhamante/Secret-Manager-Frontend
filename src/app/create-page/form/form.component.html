@@ -43,11 +43,13 @@
         class="flex-1"
         roundedInput
       >
-        @for(lifetimetype of SecretLifetimeType | keyvalue; track
-        lifetimetype.key) {
-        <option [value]="lifetimetype.value" class="dark:bg-slate-900 dark:text-slate-300">
+        @for(lifetimetype of secretLifetimeType; track lifetimetype[0]) {
+        <option
+          [value]="lifetimetype[1]"
+          class="dark:bg-slate-900 dark:text-slate-300"
+        >
           {{
-            "form.labels.lifetimeTypes." + (lifetimetype.key | lowercase)
+            "form.labels.lifetimeTypes." + (lifetimetype[0] | lowercase)
               | transloco
           }}
         </option>

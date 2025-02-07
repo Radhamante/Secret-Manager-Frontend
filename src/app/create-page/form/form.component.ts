@@ -1,4 +1,4 @@
-import { CommonModule, KeyValuePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -13,12 +13,12 @@ import { SecretLifetimeType } from '../../models/secret-lifetime-type.enum';
 import { Secret } from '../../models/secret.model';
 import { ApiService } from '../../services/api.service';
 import { SecretModalService } from '../../services/secret-modal.service';
+import { CardDirective } from '../../shared/card.directive';
 import { GradientDirective } from '../../shared/gradient-button.directive';
+import { RoundedInputDirective } from '../../shared/roundedInput.directive';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { InputComponent } from './input/input.component';
 import { lifetimeOrUsageValidator } from './validators/lifetimeOrUsage.validator';
-import { CardDirective } from '../../shared/card.directive';
-import { RoundedInputDirective } from '../../shared/roundedInput.directive';
 
 @Component({
   selector: 'app-form',
@@ -26,13 +26,12 @@ import { RoundedInputDirective } from '../../shared/roundedInput.directive';
     InputComponent,
     FormsModule,
     CommonModule,
-    KeyValuePipe,
     ReactiveFormsModule,
     TranslocoModule,
     SpinnerComponent,
     GradientDirective,
     CardDirective,
-    RoundedInputDirective
+    RoundedInputDirective,
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
@@ -46,9 +45,10 @@ export class FormComponent implements OnInit {
   secretFormSubmited = false;
   isLoading = false;
 
-  SecretLifetimeType = SecretLifetimeType;
+  secretLifetimeType = Object.entries(SecretLifetimeType).slice(5);
 
   ngOnInit() {
+    console.log(this.secretLifetimeType);
     this.secretForm = this.fb.group(
       {
         content: new FormControl('', Validators.required),
