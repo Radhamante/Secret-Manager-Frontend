@@ -1,4 +1,8 @@
 {
+  "languages": {
+    "en": "English",
+    "fr": "French"
+  },
   "form": {
     "title": "Paste your password, secret message, or private link below",
     "subtitle": "Do not store any confidential information in your emails or chat threads.",

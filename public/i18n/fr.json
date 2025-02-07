@@ -1,4 +1,8 @@
 {
+  "languages": {
+    "en": "Anglais",
+    "fr": "Français"
+  },
   "form": {
     "title": "Collez votre mot de passe, message secret ou lien privé ci-dessous",
     "subtitle": "Ne stockez aucune information confidentielle dans vos emails ou fils de discussion.",
