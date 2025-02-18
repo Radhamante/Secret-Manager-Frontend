@@ -3,18 +3,18 @@ networks:
         external: true
 
 services:
-    secret-manager:
+    secret-manager-front:
         build: .
-        container_name: secret-manager
+        container_name: secret-manager-front
         ports:
             - "8008:8008"
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.secret.rule=Host(`secret.radhamante.xyz`)"
-            - "traefik.http.routers.secret.entrypoints=websecure"
-            - "traefik.http.routers.secret.tls=true"
-            - "traefik.http.routers.secret.tls.certresolver=myresolver"
-            - "traefik.http.services.secret.loadbalancer.server.port=8008"
+            - "traefik.http.routers.secret-front.rule=Host(`secret.radhamante.xyz`)"
+            - "traefik.http.routers.secret-front.entrypoints=websecure"
+            - "traefik.http.routers.secret-front.tls=true"
+            - "traefik.http.routers.secret-front.tls.certresolver=myresolver"
+            - "traefik.http.services.secret-front.loadbalancer.server.port=8008"
         networks:
             traefik_proxy:
                 ipv4_address: 192.168.1.110
