@@ -11,7 +11,7 @@
   </a>
   <div class="flex gap-4 text-sm">
     <button
-      class="cursor-pointer px-3 py-2 border border-purple-800 text-purple-800 dark:bg-slate-900 rounded-md"
+      roundedButton
       (click)="toggleDarkMode()"
     >
       {{ isDarkMode ? "🌞" : "🌙" }}
@@ -19,7 +19,8 @@
     <div class="relative">
       <button
         (click)="isOpen = !isOpen"
-        class="cursor-pointer flex items-center px-3 py-2 border border-purple-800 dark:bg-slate-900 text-purple-800 dark:text-slate-300 rounded-md"
+        roundedButton
+        class="flex items-center"
       >
         <span class="fi fi-{{ currentLanguage.code }} mr-2"></span>
         <span>{{ currentLanguage.name }}</span>

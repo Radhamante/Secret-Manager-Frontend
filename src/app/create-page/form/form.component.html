@@ -7,19 +7,51 @@
   </p>
 
   <div class="mb-4">
+    <div class="flex items-center">
+      <button
+        type="button"
+        class="flex-1 text-sm py-0 rounded-r-none"
+        roundedButton
+        (click)="toggleContentType()"
+        [class.bg-pink-100]="isTextMode"
+      >
+        Texte
+      </button>
+
+      <button
+        type="button"
+        class="flex-1 text-sm py-0 rounded-l-none"
+        roundedButton
+        (click)="toggleContentType()"
+        [class.bg-pink-100]="!isTextMode"
+      >
+        Fichier
+      </button>
+    </div>
+    @if (isTextMode) {
     <app-input [label]="'form.labels.content' | transloco">
       <textarea
-        formControlName="content"
-        [class.border-red-500]="
-          secretForm.get('content')?.invalid && secretFormSubmited
-        "
+        formControlName="textContent"
+        [class.border-red-500]="secretForm.errors?.['textContentOrfileContentRequired'] && secretFormSubmited"
         roundedInput
         rows="5"
       ></textarea>
     </app-input>
+    } @else {
+    <app-input [label]="'form.labels.content' | transloco">
+      <input
+        type="file"
+        formControlName="fileContent"
+        roundedInput
+        [class.border-red-500]="secretForm.errors?.['textContentOrfileContentRequired'] && secretFormSubmited"
+        (change)="onFilePicked($event)"
+      />
+    </app-input>
+    }
     <app-input [label]="'form.labels.password' | transloco">
       <input
         type="password"
+        autocomplete="unique-password"
         [class.border-red-500]="
           secretForm.get('password')?.invalid && secretFormSubmited
         "
@@ -30,7 +62,7 @@
     <app-input [label]="'form.labels.lifetime' | transloco"
       ><input
         type="number"
-        [class.border-red-500]="secretForm.errors && secretFormSubmited"
+        [class.border-red-500]="secretForm.errors?.['lifetimeOrusageLimitRequired'] && secretFormSubmited"
         formControlName="lifetime"
         class="flex-2"
         roundedInput
@@ -39,7 +71,7 @@
       />
       <select
         formControlName="lifetimeType"
-        [class.border-red-500]="secretForm.errors && secretFormSubmited"
+        [class.border-red-500]="secretForm.errors?.['lifetimeOrusageLimitRequired'] && secretFormSubmited"
         class="flex-1"
         roundedInput
       >

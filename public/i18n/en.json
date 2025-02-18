@@ -7,7 +7,7 @@
     "title": "Paste your password, secret message, or private link below",
     "subtitle": "Do not store any confidential information in your emails or chat threads.",
     "labels": {
-      "content": "Your secret content goes here:",
+      "content": "Your secret content:",
       "password": "Password:",
       "lifetime": "Lifetime:",
       "usageLimit": "Usage Limit:",
@@ -57,7 +57,11 @@
     "secret": {
       "invalidPassword": "Invalid password",
       "title": "Here is the content of your secret",
-      "clipboard": "Copy to clipboard"
+      "clipboard": "Copy to clipboard",
+      "file": {
+        "warning": "The secret must have been downloaded automatically. If not, please click the button below.",
+        "download": "Download file"
+      }
     }
   }
 }

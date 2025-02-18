@@ -5,16 +5,18 @@ import {
   FormGroup,
 } from '@angular/forms';
 
-export function lifetimeOrUsageValidator(): ValidatorFn {
+export function atLeastOnValidator(first: string, second: string): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const form = control as FormGroup;
-    const lifetime = form.get('lifetime')?.value;
-    const usageLimit = form.get('usageLimit')?.value;
+    const firstValue = form.get(first)?.value;
+    const secondeValue = form.get(second)?.value;
 
-    if (lifetime > 0 || usageLimit > 0) {
+    if (firstValue || secondeValue ) {
       return null; // Validation successful
     }
 
-    return { atLeastOneRequired: true }; // Validation error
+    const errorName = `${first}Or${second}Required`
+
+    return { [errorName]: true }; // Validation error
   };
 }

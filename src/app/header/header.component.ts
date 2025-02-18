@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe, TranslocoService } from '@ngneat/transloco';
+import { RoundedButtonDirective } from '../shared/roundedButton.directive';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink, TranslocoPipe],
+  imports: [CommonModule, RouterLink, TranslocoPipe, RoundedButtonDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -16,9 +17,10 @@ export class HeaderComponent {
   ];
   isOpen = false;
 
-  currentLanguage = this.languages.find(
-    (language) => language.code === localStorage.getItem('language')
-  ) || this.languages[0];
+  currentLanguage =
+    this.languages.find(
+      (language) => language.code === localStorage.getItem('language')
+    ) || this.languages[0];
 
   private translocoService = inject(TranslocoService);
   isDarkMode: boolean = localStorage.getItem('darkmode') == 'true';

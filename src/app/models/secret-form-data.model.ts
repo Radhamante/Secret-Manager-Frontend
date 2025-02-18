@@ -1,5 +1,9 @@
+import { SecretType } from "./secret-type.enum";
+
 export interface SecretFormData {
-    content: string;
+    fileContent: string;
+    textContent: string;
+    type: SecretType;
     password: string;
     lifetime: number;
     lifetimeType: number;

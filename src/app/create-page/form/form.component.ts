@@ -18,7 +18,9 @@ import { GradientDirective } from '../../shared/gradient-button.directive';
 import { RoundedInputDirective } from '../../shared/roundedInput.directive';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { InputComponent } from './input/input.component';
-import { lifetimeOrUsageValidator } from './validators/lifetimeOrUsage.validator';
+import { atLeastOnValidator } from './validators/lifetimeOrUsage.validator';
+import { RoundedButtonDirective } from '../../shared/roundedButton.directive';
+import { SecretType } from '../../models/secret-type.enum';
 
 @Component({
   selector: 'app-form',
@@ -32,6 +34,7 @@ import { lifetimeOrUsageValidator } from './validators/lifetimeOrUsage.validator
     GradientDirective,
     CardDirective,
     RoundedInputDirective,
+    RoundedButtonDirective,
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
@@ -46,18 +49,26 @@ export class FormComponent implements OnInit {
   isLoading = false;
 
   secretLifetimeType = Object.entries(SecretLifetimeType).slice(5);
+  isTextMode: boolean = true;
 
   ngOnInit() {
     console.log(this.secretLifetimeType);
     this.secretForm = this.fb.group(
       {
-        content: new FormControl('', Validators.required),
+        textContent: new FormControl(''),
+        fileContent: new FormControl(null),
         password: ['', Validators.required],
         lifetime: [0],
         lifetimeType: [SecretLifetimeType.HOURS],
         usageLimit: [0],
       },
-      { validators: lifetimeOrUsageValidator(), updateOn: 'submit' }
+      {
+        validators: [
+          atLeastOnValidator('lifetime', 'usageLimit'),
+          atLeastOnValidator('textContent', 'fileContent'),
+        ],
+        updateOn: 'submit',
+      }
     );
   }
 
@@ -65,21 +76,30 @@ export class FormComponent implements OnInit {
     this.secretFormSubmited = true;
     if (this.secretForm.valid) {
       this.isLoading = true;
-      this.apiService.createSecret(this.secretForm.value).subscribe({
-        next: (secret: Secret) => {
-          this.isLoading = false;
-          this.secretModalService.setSecret(secret);
-          this.secretModalService.open();
-        },
-      });
-    } else {
-      console.log('Form is invalid');
-      Object.keys(this.secretForm.controls).forEach((key) => {
-        const controlErrors = this.secretForm.get(key)?.errors;
-        if (controlErrors != null) {
-          console.log(`Key: ${key}, Errors:`, controlErrors);
-        }
-      });
+      this.apiService
+        .createSecret({
+          ...this.secretForm.value,
+          fileContent: this.secretForm.get('fileContent')?.value,
+          type: this.isTextMode ? SecretType.TEXT : SecretType.FILE,
+        })
+        .subscribe({
+          next: (secret: Secret) => {
+            this.isLoading = false;
+            this.secretModalService.setSecret(secret);
+            this.secretModalService.open();
+          },
+        });
     }
+  }
+
+  onFilePicked(event: any) {
+    const file = event.target.files[0];
+    this.secretForm.patchValue({
+      fileContent: file,
+    });
+  }
+
+  toggleContentType() {
+    this.isTextMode = !this.isTextMode;
   }
 }

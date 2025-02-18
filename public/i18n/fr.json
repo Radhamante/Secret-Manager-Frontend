@@ -7,7 +7,7 @@
     "title": "Collez votre mot de passe, message secret ou lien privé ci-dessous",
     "subtitle": "Ne stockez aucune information confidentielle dans vos emails ou fils de discussion.",
     "labels": {
-      "content": "Votre contenu secret est à coller ici:",
+      "content": "Votre contenu secret:",
       "password": "Mot de passe:",
       "lifetime": "Durée de vie:",
       "usageLimit": "Limite d'utilisation:",
@@ -57,7 +57,11 @@
     "secret": {
       "invalidPassword": "Mot de passe invalide",
       "title": "Voici le contenu de votre secret",
-      "clipboard": "Copier dans le presse-papier"
+      "clipboard": "Copier dans le presse-papier",
+      "file": {
+        "warning": "Le secret a dû être téléchargé automatiquement. Si ce n'est pas le cas, veuillez cliquer sur le bouton ci-dessous.",
+        "download": "Download file"
+      }
     }
   }
 }
