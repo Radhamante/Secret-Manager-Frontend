@@ -4,6 +4,7 @@ import { SecretFormData } from '../models/secret-form-data.model';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { SecretWithContent } from '../models/secret-with-content.models';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { SecretWithContent } from '../models/secret-with-content.models';
 export class ApiService {
   private http = inject(HttpClient);
 
-  APIbaseUrl = 'http://localhost:8081';
+  APIbaseUrl = environment.apiURL;
 
   constructor() {}
 

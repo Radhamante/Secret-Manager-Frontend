@@ -18,3 +18,5 @@ services:
         networks:
             traefik_proxy:
                 ipv4_address: 192.168.1.110
+        environment:
+            - API_URL=$API_URL
