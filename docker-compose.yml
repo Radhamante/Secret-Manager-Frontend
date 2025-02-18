@@ -14,7 +14,7 @@ services:
             - "traefik.http.routers.secret.entrypoints=websecure"
             - "traefik.http.routers.secret.tls=true"
             - "traefik.http.routers.secret.tls.certresolver=myresolver"
-            - "traefik.http.services.secret.loadbalancer.server.port=8081"
+            - "traefik.http.services.secret.loadbalancer.server.port=8008"
         networks:
             traefik_proxy:
                 ipv4_address: 192.168.1.110
