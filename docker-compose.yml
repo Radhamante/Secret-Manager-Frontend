@@ -1,0 +1,20 @@
+networks:
+    traefik_proxy:
+        external: true
+
+services:
+    secret-manager:
+        build: .
+        container_name: secret-manager
+        ports:
+            - "8008:8008"
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.secret.rule=Host(`secret.radhamante.xyz`)"
+            - "traefik.http.routers.secret.entrypoints=websecure"
+            - "traefik.http.routers.secret.tls=true"
+            - "traefik.http.routers.secret.tls.certresolver=myresolver"
+            - "traefik.http.services.secret.loadbalancer.server.port=8081"
+        networks:
+            traefik_proxy:
+                ipv4_address: 192.168.1.110
