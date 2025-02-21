@@ -48,4 +48,8 @@ export class HeaderComponent {
       document.body.classList.remove('dark');
     }
   }
+
+  openLogin() {
+    throw new Error('Method not implemented.');
+  }
 }

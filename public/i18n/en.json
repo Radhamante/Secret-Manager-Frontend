@@ -3,9 +3,18 @@
     "en": "English",
     "fr": "French"
   },
+  "header": {
+    "login": {
+      "button": "Login"
+    }
+  },
   "form": {
     "title": "Paste your password, secret message, or private link below",
     "subtitle": "Do not store any confidential information in your emails or chat threads.",
+    "contentType": {
+      "text": "Text",
+      "file": "File"
+    },
     "labels": {
       "content": "Your secret content:",
       "password": "Password:",

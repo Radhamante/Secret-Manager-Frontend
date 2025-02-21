@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -10,9 +17,6 @@ import {
 } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
 import { SecretLifetimeType } from '../../models/secret-lifetime-type.enum';
-import { Secret } from '../../models/secret.model';
-import { ApiService } from '../../services/api.service';
-import { SecretModalService } from '../../services/secret-modal.service';
 import { CardDirective } from '../../shared/card.directive';
 import { GradientDirective } from '../../shared/gradient-button.directive';
 import { RoundedInputDirective } from '../../shared/roundedInput.directive';
@@ -21,6 +25,7 @@ import { InputComponent } from './input/input.component';
 import { atLeastOnValidator } from './validators/lifetimeOrUsage.validator';
 import { RoundedButtonDirective } from '../../shared/roundedButton.directive';
 import { SecretType } from '../../models/secret-type.enum';
+import { SecretFormData } from '../../models/secret-form-data.model';
 
 @Component({
   selector: 'app-form',
@@ -40,13 +45,16 @@ import { SecretType } from '../../models/secret-type.enum';
   styleUrl: './form.component.scss',
 })
 export class FormComponent implements OnInit {
+  @Output() formSubmited: EventEmitter<SecretFormData> =
+    new EventEmitter<SecretFormData>();
+
+  @Input() formIsLoading: boolean = false;
+  @Output() formIsLoadingChange = new EventEmitter<boolean>();
+
   private fb: FormBuilder = inject(FormBuilder);
-  private apiService: ApiService = inject(ApiService);
-  private secretModalService: SecretModalService = inject(SecretModalService);
 
   secretForm!: FormGroup;
   secretFormSubmited = false;
-  isLoading = false;
 
   secretLifetimeType = Object.entries(SecretLifetimeType).slice(5);
   isTextMode: boolean = true;
@@ -75,20 +83,12 @@ export class FormComponent implements OnInit {
   onSubmit() {
     this.secretFormSubmited = true;
     if (this.secretForm.valid) {
-      this.isLoading = true;
-      this.apiService
-        .createSecret({
-          ...this.secretForm.value,
-          fileContent: this.secretForm.get('fileContent')?.value,
-          type: this.isTextMode ? SecretType.TEXT : SecretType.FILE,
-        })
-        .subscribe({
-          next: (secret: Secret) => {
-            this.isLoading = false;
-            this.secretModalService.setSecret(secret);
-            this.secretModalService.open();
-          },
-        });
+      this.formIsLoadingChange.emit(true);
+      this.formSubmited.emit({
+        ...this.secretForm.value,
+        fileContent: this.secretForm.get('fileContent')?.value,
+        type: this.isTextMode ? SecretType.TEXT : SecretType.FILE,
+      });
     }
   }
 

@@ -7,23 +7,23 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class SecretModalService {
-  showModal$ = new BehaviorSubject<boolean>(false);
-  secret$ = new BehaviorSubject<Secret | undefined>(undefined);
-  secretUrl$ = new BehaviorSubject<string>('');
+  // showModal$ = new BehaviorSubject<boolean>(false);
+  // secret$ = new BehaviorSubject<Secret | undefined>(undefined);
+  // secretUrl$ = `${window.location.origin}/secret/${this.secret$.uuid}`;
 
-  setSecret(secret: Secret) {
-    this.secret$.next(secret);
-    const secretUrl = `${window.location.origin}/secret/${secret.uuid}`;
-    this.secretUrl$.next(secretUrl);
-  }
+  // setSecret(secret: Secret) {
+  //   this.secret$.next(secret);
+  //   const secretUrl = `${window.location.origin}/secret/${secret.uuid}`;
+  //   this.secretUrl$.next(secretUrl);
+  // }
 
-  open() {
-    this.showModal$.next(true);
-  }
+  // open() {
+  //   this.showModal$.next(true);
+  // }
 
-  close() {
-    this.showModal$.next(false);
-  }
+  // close() {
+  //   this.showModal$.next(false);
+  // }
 
-  constructor() {}
+  // constructor() {}
 }

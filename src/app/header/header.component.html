@@ -10,10 +10,10 @@
     </h2>
   </a>
   <div class="flex gap-4 text-sm">
-    <button
-      roundedButton
-      (click)="toggleDarkMode()"
-    >
+    <button roundedButton (click)="openLogin()">
+      {{ "header.login.button" | transloco }}
+    </button>
+    <button roundedButton (click)="toggleDarkMode()">
       {{ isDarkMode ? "🌞" : "🌙" }}
     </button>
     <div class="relative">

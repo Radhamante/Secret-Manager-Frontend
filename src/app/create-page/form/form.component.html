@@ -15,7 +15,7 @@
         (click)="toggleContentType()"
         [class.bg-pink-100]="isTextMode"
       >
-        Texte
+        {{"form.contentType.text" | transloco}}
       </button>
 
       <button
@@ -25,7 +25,7 @@
         (click)="toggleContentType()"
         [class.bg-pink-100]="!isTextMode"
       >
-        Fichier
+        {{"form.contentType.file" | transloco}}
       </button>
     </div>
     @if (isTextMode) {
@@ -99,7 +99,7 @@
   </div>
 
   <button gradient class="relative w-full">
-    @if(isLoading){
+    @if(formIsLoading){
     <div
       role="status"
       class="absolute inset-0 flex items-center justify-center"
@@ -107,7 +107,7 @@
       <app-spinner></app-spinner>
     </div>
     }
-    <p [class.scale-0]="isLoading">
+    <p [class.scale-0]="formIsLoading">
       {{ "form.labels.submit" | transloco }}
     </p>
   </button>

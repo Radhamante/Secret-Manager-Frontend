@@ -3,9 +3,18 @@
     "en": "Anglais",
     "fr": "Français"
   },
+  "header": {
+    "login": {
+      "button": "Connexion"
+    }
+  },
   "form": {
     "title": "Collez votre mot de passe, message secret ou lien privé ci-dessous",
     "subtitle": "Ne stockez aucune information confidentielle dans vos emails ou fils de discussion.",
+    "contentType": {
+      "text": "Texte",
+      "file": "Fichier"
+    },
     "labels": {
       "content": "Votre contenu secret:",
       "password": "Mot de passe:",
