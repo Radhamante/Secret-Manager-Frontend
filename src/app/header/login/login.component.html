@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+  <app-input [label]="'header.login.form.username' | transloco">
+    <input
+      type="text"
+      roundedInput
+      formControlName="username"
+      [class.border-red-500]="
+        loginForm.get('username')?.invalid && loginFormSubmited
+      "
+    />
+  </app-input>
+  <app-input [label]="'header.login.form.password' | transloco">
+    <input
+      type="password"
+      formControlName="password"
+      roundedInput
+      [class.border-red-500]="
+        loginForm.get('password')?.invalid && loginFormSubmited
+      "
+    />
+  </app-input>
+  <button type="submit" gradient class="w-full">
+    {{ "header.login.form.submit" | transloco }}
+  </button>
+</form>

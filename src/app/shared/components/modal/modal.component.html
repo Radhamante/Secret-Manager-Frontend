@@ -2,13 +2,14 @@
 
 <!-- Backdrop -->
 <div
-  class="fixed inset-0 bg-gradient-to-br from-pink-500 to-purple-500 opacity-50 transition-opacity"
+  class="z-1 fixed inset-0 bg-gradient-to-br from-pink-500 to-purple-500 opacity-50 transition-opacity"
 ></div>
 
 <!-- Main modal -->
 <div
   aria-hidden="true"
-  class="fixed inset-0 z-50 max-w-2xl p-4 m-auto dark:bg-slate-800 dark:text-slate-300"
+  class="fixed inset-0 z-50 p-4 m-auto dark:bg-slate-800 dark:text-slate-300"
+  [ngClass]="['max-w-' + width]"
   card
 >
   <div

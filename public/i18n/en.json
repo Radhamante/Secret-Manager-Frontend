@@ -1,11 +1,49 @@
 {
+  "errors": {
+    "unknown": "An unknown error occurred. Please try again later."
+  },
   "languages": {
     "en": "English",
     "fr": "French"
   },
   "header": {
+    "logout": {
+      "button": "Logout"
+    },
     "login": {
-      "button": "Login"
+      "button": "Login",
+      "title": "Login",
+      "form": {
+        "username": "Username",
+        "password": "Password",
+        "submit": "Log in"
+      },
+      "noAccount": {
+        "text": "Don't have an account?",
+        "link": "Register here"
+      },
+      "errors": {
+        "invalidCredentials": "Invalid credentials",
+        "missingInputs": "Please fill in all fields"
+      }
+    },
+    "register": {
+      "button": "Register",
+      "title": "Register",
+      "form": {
+        "username": "Username",
+        "password": "Password",
+        "passwordConfirmation": "Confirm password",
+        "submit": "Register"
+      },
+      "alreadyAccount": {
+        "text": "Already have an account?",
+        "link": "Log in here"
+      },
+      "errors": {
+        "passwordsDoNotMatch": "Passwords do not match",
+        "usernameTaken": "This username is already taken"
+      }
     }
   },
   "form": {

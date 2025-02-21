@@ -22,8 +22,7 @@ import { GradientDirective } from '../../shared/gradient-button.directive';
 import { RoundedInputDirective } from '../../shared/roundedInput.directive';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { InputComponent } from './input/input.component';
-import { atLeastOnValidator } from './validators/lifetimeOrUsage.validator';
-import { RoundedButtonDirective } from '../../shared/roundedButton.directive';
+import { atLeastOneValidator } from '../../shared/validators/atLeastOne.validator';
 import { SecretType } from '../../models/secret-type.enum';
 import { SecretFormData } from '../../models/secret-form-data.model';
 
@@ -31,7 +30,6 @@ import { SecretFormData } from '../../models/secret-form-data.model';
   selector: 'app-form',
   imports: [
     InputComponent,
-    FormsModule,
     CommonModule,
     ReactiveFormsModule,
     TranslocoModule,
@@ -39,7 +37,6 @@ import { SecretFormData } from '../../models/secret-form-data.model';
     GradientDirective,
     CardDirective,
     RoundedInputDirective,
-    RoundedButtonDirective,
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
@@ -72,8 +69,8 @@ export class FormComponent implements OnInit {
       },
       {
         validators: [
-          atLeastOnValidator('lifetime', 'usageLimit'),
-          atLeastOnValidator('textContent', 'fileContent'),
+          atLeastOneValidator('lifetime', 'usageLimit'),
+          atLeastOneValidator('textContent', 'fileContent'),
         ],
         updateOn: 'submit',
       }
@@ -99,7 +96,7 @@ export class FormComponent implements OnInit {
     });
   }
 
-  toggleContentType() {
-    this.isTextMode = !this.isTextMode;
+  toggleContentType(isTextMode: boolean) {
+    this.isTextMode = isTextMode;
   }
 }

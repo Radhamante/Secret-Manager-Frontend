@@ -12,6 +12,9 @@ import { BehaviorSubject, ReplaySubject } from 'rxjs';
   imports: [FormComponent, DocComponent, SecretModalComponent],
   templateUrl: './create-page.component.html',
   styleUrl: './create-page.component.scss',
+  host: {
+    class: 'flex flex-1',
+  },
 })
 export class CreatePageComponent {
   static path = '';

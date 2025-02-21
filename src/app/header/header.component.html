@@ -10,15 +10,24 @@
     </h2>
   </a>
   <div class="flex gap-4 text-sm">
-    <button roundedButton (click)="openLogin()">
+    @if(!isUserLogged) {
+    <button roundedButton (click)="onToggleLoginModal(true)">
       {{ "header.login.button" | transloco }}
     </button>
+    <button gradient (click)="onToggleRegisterModal(true)">
+      {{ "header.register.button" | transloco }}
+    </button>
+    }@else {
+    <button roundedButton (click)="onLogout()">
+      {{ "header.logout.button" | transloco }}
+    </button>
+    }
     <button roundedButton (click)="toggleDarkMode()">
       {{ isDarkMode ? "🌞" : "🌙" }}
     </button>
     <div class="relative">
       <button
-        (click)="isOpen = !isOpen"
+        (click)="isLanguageOpen = !isLanguageOpen"
         roundedButton
         class="flex items-center"
       >
@@ -39,12 +48,12 @@
       </button>
 
       <div
-        *ngIf="isOpen"
+        *ngIf="isLanguageOpen"
         class="absolute right-0 mt-2 border border-purple-800 dark:bg-slate-900 text-purple-800 dark:text-slate-300 rounded-md shadow-lg overflow-hidden"
       >
         <a
           *ngFor="let language of languages"
-          (click)="changeLanguage(language); isOpen = false"
+          (click)="changeLanguage(language); isLanguageOpen = false"
           class="flex items-center px-6 py-2 hover:bg-purple-100 dark:hover:bg-purple-500/25 cursor-pointer"
         >
           <span>{{ "languages." + language.code | transloco }}</span>
@@ -53,3 +62,35 @@
     </div>
   </div>
 </header>
+<app-modal [(isOpen)]="isLoginModalOpen" width="md">
+  <h2 header class="text-2xl font-bold">
+    {{ "header.login.title" | transloco }}
+  </h2>
+  <app-login body (isLogged)="onUserLogged()"></app-login>
+  <div footer class="py-1 my-2 border-t border-gray-200">
+    <p>
+      {{ "header.login.noAccount.text" | transloco }}
+      <span
+        (click)="onNoAccountClick()"
+        class="text-blue-500 underline cursor-pointer"
+        >{{ "header.login.noAccount.link" | transloco }}</span
+      >
+    </p>
+  </div>
+</app-modal>
+<app-modal [(isOpen)]="isRegisterModalOpen" width="md">
+  <h2 header class="text-2xl font-bold">
+    {{ "header.register.title" | transloco }}
+  </h2>
+  <app-register body (isregistered)="onUserRegistered()"></app-register>
+  <div footer class="py-1 my-2 border-t border-gray-200">
+    <p>
+      {{ "header.register.alreadyAccount.text" | transloco }}
+      <span
+        class="text-blue-500 underline cursor-pointer"
+        (click)="onAlreadyAccountClick()"
+        >{{ "header.register.alreadyAccount.link" | transloco }}</span
+      >
+    </p>
+  </div>
+</app-modal>

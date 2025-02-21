@@ -1,0 +1,41 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+  <app-input [label]="'header.register.form.username' | transloco">
+    <input
+      type="username"
+      roundedInput
+      formControlName="username"
+      [class.border-red-500]="
+        registerForm.get('username')?.invalid && registerFormSubmited
+      "
+    />
+  </app-input>
+  <app-input [label]="'header.register.form.password' | transloco">
+    <input
+      type="password"
+      roundedInput
+      formControlName="password"
+      [class.border-red-500]="
+        registerForm.get('password')?.invalid && registerFormSubmited
+      "
+    />
+  </app-input>
+  <app-input [label]="'header.register.form.passwordConfirmation' | transloco">
+    <input
+      type="password"
+      roundedInput
+      formControlName="passwordConfirmation"
+      [class.border-red-500]="
+        registerForm.get('passwordConfirmation')?.invalid &&
+        registerFormSubmited
+      "
+    />
+  </app-input>
+  <button type="submit" gradient class="w-full">
+    {{ "header.register.form.submit" | transloco }}
+  </button>
+  @if (errorMessage) {
+    <div class="text-red-500">
+      <p>{{errorMessage}}</p>
+    </div>
+  }
+</form>

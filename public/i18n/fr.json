@@ -1,11 +1,49 @@
 {
+  "errors": {
+    "unknown": "Une erreur inconnue s'est produite. Veuillez réessayer plus tard."
+  },
   "languages": {
     "en": "Anglais",
     "fr": "Français"
   },
   "header": {
+    "logout": {
+      "button": "Déconnexion"
+    },
     "login": {
-      "button": "Connexion"
+      "button": "Connexion",
+      "title": "Connexion",
+      "form": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "submit": "Se connecter"
+      },
+      "noAccount": {
+        "text": "Vous n'avez pas de compte ?",
+        "link": "Inscrivez-vous ici"
+      },
+      "errors": {
+        "invalidCredentials": "Identifiants invalides",
+        "missingInputs": "Veuillez remplir tous les champs"
+      }
+    },
+    "register": {
+      "button": "Inscription",
+      "title": "Inscription",
+      "form": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "passwordConfirmation": "Confirmez le mot de passe",
+        "submit": "S'inscrire"
+      },
+      "alreadyAccount": {
+        "text": "Vous avez déjà un compte ?",
+        "link": "Connectez-vous ici"
+      },
+      "errors": {
+        "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+        "usernameTaken": "Ce nom d'utilisateur est déjà pris"
+      }
     }
   },
   "form": {
