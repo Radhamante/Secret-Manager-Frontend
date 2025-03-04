@@ -9,6 +9,16 @@
       Secret Manager
     </h2>
   </a>
+  @let secretCount = secretCount$ | async; @if(secretCount) {
+  <div>
+    <p
+      class="text-transparent bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text"
+    >
+      <span>{{ "header.count.already" | transloco }} </span
+      ><span class="font-bold">{{ secretCount }}</span> {{ "header.count.created" | transloco }}
+    </p>
+  </div>
+  }
   <div class="flex gap-4 text-sm">
     @if(!isUserLogged) {
     <button roundedButton (click)="onToggleLoginModal(true)">
@@ -114,11 +124,9 @@
         <span class="font-bold">
           {{ "header.history.created" | transloco }} :
         </span>
-        <span class="font-bold">{{ secret.creation| date : "dd/MM" }}</span>
+        <span class="font-bold">{{ secret.creation | date : "dd/MM" }}</span>
         <span> {{ "header.history.limits.at" | transloco }} </span>
-        <span class="font-bold">{{
-          secret.creation | date : "HH:mm:ss"
-        }}</span>
+        <span class="font-bold">{{ secret.creation | date : "HH:mm:ss" }}</span>
       </p>
       <p>
         <span class="font-bold">

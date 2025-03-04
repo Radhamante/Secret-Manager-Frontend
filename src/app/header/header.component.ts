@@ -41,6 +41,8 @@ export class HeaderComponent {
     }
   }
 
+  secretCount$ = this.apiService.countSubject$
+
   // HISTORY
   historyDrawerOpen: boolean = false;
   secretHistory: Secret[] = [];

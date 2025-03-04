@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Secret } from '../models/secret.model';
 import { SecretFormData } from '../models/secret-form-data.model';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { SecretWithContent } from '../models/secret-with-content.models';
 import { environment } from '../../environments/environment';
 import { SecretType } from '../models/secret-type.enum';
@@ -14,9 +14,20 @@ import { SecretFileResponse } from '../models/secret-file-response.model';
 export class ApiService {
   private http = inject(HttpClient);
 
+  private eventSource: EventSource;
+  countSubject$ = new Subject<number>();
+
   APIbaseUrl = environment.apiURL;
 
-  constructor() {}
+  constructor() {
+    this.eventSource = new EventSource(`${this.APIbaseUrl}/secrets/count`);
+    this.eventSource.onmessage = (event) => {
+      this.countSubject$.next(parseInt(event.data));
+    };
+    this.eventSource.onerror = (error) => {
+      console.error('EventSource failed:', error);
+    }
+  }
 
   createSecret(secretData: SecretFormData): Observable<Secret> {
     console.log(secretData);
