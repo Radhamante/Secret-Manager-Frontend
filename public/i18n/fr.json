@@ -1,11 +1,77 @@
 {
+  "errors": {
+    "unknown": "Une erreur inconnue s'est produite. Veuillez réessayer plus tard."
+  },
   "languages": {
     "en": "Anglais",
     "fr": "Français"
   },
+  "header": {
+    "count": {
+      "already": "Already",
+      "created": "secrets created"
+    },
+    "history": {
+      "button": "Historique",
+      "title": "Historique",
+      "created": "Créé le",
+      "usages": "Nombre de lectures",
+      "empty": "Aucun secret à afficher",
+      "limits": {
+        "main": "Ce secret sera détruit",
+        "the": "le",
+        "at": "a",
+        "or": "ou",
+        "after": "après",
+        "usages": "utilisations"
+      }
+    },
+    "logout": {
+      "button": "Déconnexion"
+    },
+    "login": {
+      "button": "Connexion",
+      "title": "Connexion",
+      "form": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "submit": "Se connecter"
+      },
+      "noAccount": {
+        "text": "Vous n'avez pas de compte ?",
+        "link": "Inscrivez-vous ici"
+      },
+      "errors": {
+        "invalidCredentials": "Identifiants invalides",
+        "missingInputs": "Veuillez remplir tous les champs"
+      }
+    },
+    "register": {
+      "button": "Inscription",
+      "title": "Inscription",
+      "form": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "passwordConfirmation": "Confirmez le mot de passe",
+        "submit": "S'inscrire"
+      },
+      "alreadyAccount": {
+        "text": "Vous avez déjà un compte ?",
+        "link": "Connectez-vous ici"
+      },
+      "errors": {
+        "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+        "usernameTaken": "Ce nom d'utilisateur est déjà pris"
+      }
+    }
+  },
   "form": {
     "title": "Collez votre mot de passe, message secret ou lien privé ci-dessous",
     "subtitle": "Ne stockez aucune information confidentielle dans vos emails ou fils de discussion.",
+    "contentType": {
+      "text": "Texte",
+      "file": "Fichier"
+    },
     "labels": {
       "content": "Votre contenu secret:",
       "password": "Mot de passe:",

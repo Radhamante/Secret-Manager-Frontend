@@ -19,6 +19,7 @@ export class RoundedButtonDirective implements OnInit {
       'rounded-md',
       'hover:bg-purple-100',
       'dark:hover:bg-purple-500/25',
+      'dark:text-slate-300'
     ];
 
     // Ajouter chaque classe à l'élément

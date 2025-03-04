@@ -10,22 +10,24 @@
     <div class="flex items-center">
       <button
         type="button"
-        class="flex-1 text-sm py-0 rounded-r-none"
-        roundedButton
-        (click)="toggleContentType()"
-        [class.bg-pink-100]="isTextMode"
+        class="flex-1 text-sm py-0 rounded-r-none cursor-pointer py-1 border border-purple-800 text-purple-800 rounded-md dark:text-slate-300"
+        (click)="toggleContentType(true)"
+        [class.bg-purple-500]="isTextMode"
+        [class.dark:bg-purple-700]="isTextMode"
+        [class.text-white]="isTextMode"
       >
-        Texte
+        {{ "form.contentType.text" | transloco }}
       </button>
 
       <button
         type="button"
-        class="flex-1 text-sm py-0 rounded-l-none"
-        roundedButton
-        (click)="toggleContentType()"
-        [class.bg-pink-100]="!isTextMode"
+        class="flex-1 text-sm py-0 rounded-l-none cursor-pointer py-1 border border-purple-800 text-purple-800 rounded-md dark:text-slate-300"
+        (click)="toggleContentType(false)"
+        [class.bg-purple-500]="!isTextMode"
+        [class.dark:bg-purple-700]="!isTextMode"
+        [class.text-white]="!isTextMode"
       >
-        Fichier
+        {{ "form.contentType.file" | transloco }}
       </button>
     </div>
     @if (isTextMode) {
@@ -99,7 +101,7 @@
   </div>
 
   <button gradient class="relative w-full">
-    @if(isLoading){
+    @if(formIsLoading){
     <div
       role="status"
       class="absolute inset-0 flex items-center justify-center"
@@ -107,7 +109,7 @@
       <app-spinner></app-spinner>
     </div>
     }
-    <p [class.scale-0]="isLoading">
+    <p [class.scale-0]="formIsLoading">
       {{ "form.labels.submit" | transloco }}
     </p>
   </button>

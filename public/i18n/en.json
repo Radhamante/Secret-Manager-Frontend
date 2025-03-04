@@ -1,11 +1,77 @@
 {
+  "errors": {
+    "unknown": "An unknown error occurred. Please try again later."
+  },
   "languages": {
     "en": "English",
     "fr": "French"
   },
+  "header": {
+    "count": {
+      "already": "Already",
+      "created": "secrets created"
+    },
+    "history": {
+      "button": "History",
+      "title": "History",
+      "created": "Created the",
+      "usages": "Usages count",
+      "empty": "No secrets to display",
+      "limits": {
+        "main": "This secret will be destroyed",
+        "the": "the",
+        "at": "at",
+        "or": "or",
+        "after": "after",
+        "usages": "usages"
+      }
+    },
+    "logout": {
+      "button": "Logout"
+    },
+    "login": {
+      "button": "Login",
+      "title": "Login",
+      "form": {
+        "username": "Username",
+        "password": "Password",
+        "submit": "Log in"
+      },
+      "noAccount": {
+        "text": "Don't have an account?",
+        "link": "Register here"
+      },
+      "errors": {
+        "invalidCredentials": "Invalid credentials",
+        "missingInputs": "Please fill in all fields"
+      }
+    },
+    "register": {
+      "button": "Register",
+      "title": "Register",
+      "form": {
+        "username": "Username",
+        "password": "Password",
+        "passwordConfirmation": "Confirm password",
+        "submit": "Register"
+      },
+      "alreadyAccount": {
+        "text": "Already have an account?",
+        "link": "Log in here"
+      },
+      "errors": {
+        "passwordsDoNotMatch": "Passwords do not match",
+        "usernameTaken": "This username is already taken"
+      }
+    }
+  },
   "form": {
     "title": "Paste your password, secret message, or private link below",
     "subtitle": "Do not store any confidential information in your emails or chat threads.",
+    "contentType": {
+      "text": "Text",
+      "file": "File"
+    },
     "labels": {
       "content": "Your secret content:",
       "password": "Password:",
