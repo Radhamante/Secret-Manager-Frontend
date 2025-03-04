@@ -25,6 +25,7 @@ import { InputComponent } from './input/input.component';
 import { atLeastOneValidator } from '../../shared/validators/atLeastOne.validator';
 import { SecretType } from '../../models/secret-type.enum';
 import { SecretFormData } from '../../models/secret-form-data.model';
+import { fileSizeValidator } from '../../shared/validators/fileSize.validator';
 
 @Component({
   selector: 'app-form',
@@ -61,7 +62,7 @@ export class FormComponent implements OnInit {
     this.secretForm = this.fb.group(
       {
         textContent: new FormControl(''),
-        fileContent: new FormControl(null),
+        fileContent: [null, [fileSizeValidator(5)]],
         password: ['', Validators.required],
         lifetime: [0],
         lifetimeType: [SecretLifetimeType.HOURS],
@@ -79,11 +80,15 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     this.secretFormSubmited = true;
+    const fileContent: File = this.secretForm.get('fileContent')?.value;
+    if (fileContent && fileContent.size > 5 * 1024 * 1024) {
+      throw new Error('File size exceeds the 5MB limit.');
+    }
     if (this.secretForm.valid) {
       this.formIsLoadingChange.emit(true);
       this.formSubmited.emit({
         ...this.secretForm.value,
-        fileContent: this.secretForm.get('fileContent')?.value,
+        fileContent: fileContent,
         type: this.isTextMode ? SecretType.TEXT : SecretType.FILE,
       });
     }

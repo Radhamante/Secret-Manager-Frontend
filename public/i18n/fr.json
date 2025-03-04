@@ -8,8 +8,8 @@
   },
   "header": {
     "count": {
-      "already": "Already",
-      "created": "secrets created"
+      "already": "Déjà",
+      "created": "secrets créés !"
     },
     "history": {
       "button": "Historique",
@@ -70,7 +70,7 @@
     "subtitle": "Ne stockez aucune information confidentielle dans vos emails ou fils de discussion.",
     "contentType": {
       "text": "Texte",
-      "file": "Fichier"
+      "file": "Fichier (max 5MB)"
     },
     "labels": {
       "content": "Votre contenu secret:",
@@ -85,6 +85,11 @@
         "weeks": "Semaines",
         "months": "Mois"
       }
+    },
+    "error": {
+      "required": "Ce champ est requis",
+      "lifetimeOrUsage": "Vous devez définir une durée de vie ou une limite d'utilisation",
+      "fileToBig": "Le fichier est trop volumineux. La taille maximale est de 5 Mo."
     }
   },
   "doc": {

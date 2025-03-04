@@ -9,7 +9,7 @@
   "header": {
     "count": {
       "already": "Already",
-      "created": "secrets created"
+      "created": "secrets created !"
     },
     "history": {
       "button": "History",
@@ -70,7 +70,7 @@
     "subtitle": "Do not store any confidential information in your emails or chat threads.",
     "contentType": {
       "text": "Text",
-      "file": "File"
+      "file": "File (max 5MB)"
     },
     "labels": {
       "content": "Your secret content:",
@@ -85,6 +85,11 @@
         "weeks": "Weeks",
         "months": "Months"
       }
+    },
+    "error": {
+      "required": "This field is required",
+      "lifetimeOrUsage": "You must set a lifetime or a usage limit",
+      "fileToBig": "The file is too big. The maximum size is 5MB."
     }
   },
   "doc": {
