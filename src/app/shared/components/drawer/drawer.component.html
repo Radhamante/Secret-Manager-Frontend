@@ -1,10 +1,10 @@
 <!-- Backdrop -->
 @if(open) {
-  <div
-    (click)="toggle(false)"
-    class="absolute inset-0 transition-opacity opacity-50 cursor-pointer bg-gradient-to-br from-pink-500 to-purple-500"
-    tabindex="-1"
-  ></div>
+<div
+  (click)="toggle(false)"
+  class="absolute inset-0 transition-opacity opacity-50 cursor-pointer bg-gradient-to-br from-pink-500 to-purple-500"
+  tabindex="-1"
+></div>
 }
 
 <!-- drawer component -->
@@ -12,35 +12,41 @@
   [class.translate-x-full]="!open"
   class="{{
     width
-  }} fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800"
+  }} fixed top-0 right-0 z-40 h-full flex flex-col overflow-y-auto transition-transform bg-white dark:bg-slate-900"
   tabindex="-1"
 >
-  <h5
-    class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"
+  <div
+    class="flex items-center justify-between p-5 border-b border-gray-200 dark:border-gray-700"
   >
-    <ng-content select="[header]"></ng-content>
-  </h5>
-  <button
-    type="button"
-    (click)="toggle(false)"
-    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
-  >
-    <svg
-      class="w-3 h-3"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 14 14"
+    <h5
+      class="inline-flex items-center text-lg font-bold text-black dark:text-slate-300"
     >
-      <path
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-      />
-    </svg>
-    <span class="sr-only">Close menu</span>
-  </button>
-  <ng-content select="[body]"></ng-content>
+      <ng-content select="[header]"></ng-content>
+    </h5>
+    <button
+      type="button"
+      (click)="toggle(false)"
+      class="flex items-center justify-center w-8 h-8 text-sm text-purple-800 bg-transparent rounded-lg hover:bg-purple-100 dark:hover:bg-purple-500/25 dark:text-slate-300"
+    >
+      <svg
+        class="w-3 h-3"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+        />
+      </svg>
+      <span class="sr-only">Close menu</span>
+    </button>
+  </div>
+  <div class="flex-1 p-3 overflow-y-auto">
+    <ng-content select="[body]"></ng-content>
+  </div>
 </div>

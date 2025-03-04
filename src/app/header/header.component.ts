@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe, TranslocoService } from '@ngneat/transloco';
@@ -8,6 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { GradientDirective } from '../shared/gradient-button.directive';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from '../services/auth.service';
+import { DrawerComponent } from '../shared/components/drawer/drawer.component';
+import { Secret } from '../models/secret.model';
+import { ApiService } from '../services/api.service';
+import { CardDirective } from '../shared/card.directive';
 
 @Component({
   selector: 'app-header',
@@ -20,12 +24,16 @@ import { AuthService } from '../services/auth.service';
     LoginComponent,
     GradientDirective,
     RegisterComponent,
+    DrawerComponent,
+    CardDirective,
+    DatePipe,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   private authService: AuthService = inject(AuthService);
+  private apiService: ApiService = inject(ApiService);
 
   constructor() {
     if (this.isDarkMode) {
@@ -33,8 +41,26 @@ export class HeaderComponent {
     }
   }
 
+  // HISTORY
+  historyDrawerOpen: boolean = false;
+  secretHistory: Secret[] = [];
+  onToggleHistoryDrawer(isOpen: boolean) {
+    if (this.authService.isLogin()) {
+      this.apiService.getSecrets().subscribe({
+        next: (secrets) => {
+          this.secretHistory = secrets;
+        },
+        error: (error) => {
+          console.error('Error fetching secrets', error);
+        },
+      });
+    }
+    console.log('truc');
+    this.historyDrawerOpen = isOpen;
+  }
+
   // LOGIN
-  isUserLogged = false;
+  isUserLogged = this.authService.isLogin();
   isLoginModalOpen = false;
   onToggleLoginModal(isOpen: boolean) {
     this.isLoginModalOpen = isOpen;

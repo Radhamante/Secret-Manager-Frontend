@@ -7,6 +7,21 @@
     "fr": "Français"
   },
   "header": {
+    "history": {
+      "button": "Historique",
+      "title": "Historique",
+      "created": "Créé le",
+      "usages": "Nombre de lectures",
+      "empty": "Aucun secret à afficher",
+      "limits": {
+        "main": "Ce secret sera détruit",
+        "the": "le",
+        "at": "a",
+        "or": "ou",
+        "after": "après",
+        "usages": "utilisations"
+      }
+    },
     "logout": {
       "button": "Déconnexion"
     },

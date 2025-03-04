@@ -99,4 +99,21 @@ export class ApiService {
         })
       );
   }
+
+  getSecrets(): Observable<Secret[]> {
+    return this.http.get(`${this.APIbaseUrl}/secrets`).pipe(
+      map((response: any) => {
+        return response.map((secret: any) => {
+          return new Secret(
+            secret.uuid,
+            new Date(secret.creation),
+            secret.destruction ? new Date(secret.destruction) : undefined,
+            secret.usage_limit,
+            secret.usage_count,
+            secret.type
+          );
+        });
+      })
+    );
+  }
 }

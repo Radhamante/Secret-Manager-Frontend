@@ -7,6 +7,21 @@
     "fr": "French"
   },
   "header": {
+    "history": {
+      "button": "History",
+      "title": "History",
+      "created": "Created the",
+      "usages": "Usages count",
+      "empty": "No secrets to display",
+      "limits": {
+        "main": "This secret will be destroyed",
+        "the": "the",
+        "at": "at",
+        "or": "or",
+        "after": "after",
+        "usages": "usages"
+      }
+    },
     "logout": {
       "button": "Logout"
     },

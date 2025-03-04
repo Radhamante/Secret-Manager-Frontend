@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { AccessToken } from '../models/access-token.model';
-import { catchError, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +13,16 @@ export class AuthService {
 
   currentAccessToken: AccessToken | null = null;
 
-  constructor() {}
+  constructor() {
+    const token = localStorage.getItem('currentAccessToken');
+    if (token) {
+      this.currentAccessToken = JSON.parse(token);
+    }
+  }
+
+  isLogin(): boolean {
+    return this.currentAccessToken != null;
+  }
 
   login(username: string, password: string): Observable<AccessToken> {
     const body = new FormData();
@@ -27,6 +35,7 @@ export class AuthService {
     return this.http.post<AccessToken>(`${this.APIbaseUrl}/login`, body).pipe(
       map((response) => {
         this.currentAccessToken = response;
+        localStorage.setItem('currentAccessToken', JSON.stringify(response));
         return response;
       })
     );
@@ -34,6 +43,7 @@ export class AuthService {
 
   logout() {
     this.currentAccessToken = null;
+    localStorage.removeItem('currentAccessToken');
   }
 
   register(username: string, password: string): Observable<AccessToken> {
@@ -45,6 +55,7 @@ export class AuthService {
       .pipe(
         map((response) => {
           this.currentAccessToken = response;
+          localStorage.setItem('currentAccessToken', JSON.stringify(response));
           return response;
         })
       );
