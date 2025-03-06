@@ -10,7 +10,7 @@ services:
             - "8008:8008"
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.secret-front.rule=Host(`secret.radhamante.xyz`)"
+            - "traefik.http.routers.secret-front.rule=Host(`secret.radhamante.fr`)"
             - "traefik.http.routers.secret-front.entrypoints=websecure"
             - "traefik.http.routers.secret-front.tls=true"
             - "traefik.http.routers.secret-front.tls.certresolver=myresolver"
