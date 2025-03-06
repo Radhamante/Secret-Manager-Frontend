@@ -2,13 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { AccessToken } from '../models/access-token.model';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
+import { MessageType } from '../models/message-type.enum';
+import { MessageService } from './message.service';
+import { Message } from '../models/message.model';
+import { KeyRound, ServerOff } from 'lucide-angular';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private http = inject(HttpClient);
+  private messageService: MessageService = inject(MessageService);
   APIbaseUrl = environment.apiURL;
 
   currentAccessToken: AccessToken | null = null;
@@ -37,6 +42,19 @@ export class AuthService {
         this.currentAccessToken = response;
         localStorage.setItem('currentAccessToken', JSON.stringify(response));
         return response;
+      }),
+      catchError((error) => {
+        console.error('Error login in:', error);
+        if (error.status === 0) {
+          this.messageService.add(
+            new Message('errors.serverDown', MessageType.ERROR, ServerOff)
+          );
+        } else if (error.status != 401) {
+          this.messageService.add(
+            new Message('errors.unknown', MessageType.ERROR)
+          );
+        }
+        throw error;
       })
     );
   }
@@ -57,6 +75,19 @@ export class AuthService {
           this.currentAccessToken = response;
           localStorage.setItem('currentAccessToken', JSON.stringify(response));
           return response;
+        }),
+        catchError((error) => {
+          console.error('Error registering:', error);
+          if (error.status === 0) {
+            this.messageService.add(
+              new Message('errors.serverDown', MessageType.ERROR, ServerOff)
+            );
+          } else if (error.status != 409) {
+            this.messageService.add(
+              new Message('errors.unknown', MessageType.ERROR)
+            );
+          }
+          throw error;
         })
       );
   }

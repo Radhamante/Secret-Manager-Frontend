@@ -58,7 +58,6 @@ export class FormComponent implements OnInit {
   isTextMode: boolean = true;
 
   ngOnInit() {
-    console.log(this.secretLifetimeType);
     this.secretForm = this.fb.group(
       {
         textContent: new FormControl(''),

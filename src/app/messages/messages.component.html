@@ -1,0 +1,5 @@
+<div class="z-20 absolute bottom-0 right-0 flex gap-2 p-3 flex-col-reverse align-center h-max overflow-hidden">
+    @for(message of messages$ | async; track message.id) {
+        <app-message [message]="message" (remove)="removeMessage($event)"></app-message>
+    }
+</div>

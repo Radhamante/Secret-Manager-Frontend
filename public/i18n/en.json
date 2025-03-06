@@ -1,6 +1,9 @@
 {
   "errors": {
-    "unknown": "An unknown error occurred. Please try again later."
+    "unknown": "An unknown error occurred. Please try again later.",
+    "serverDown": "The server is currently down. Please try again later.",
+    "invalidCredentials": "Invalid credentials",
+    "usernameAlreadyExists": "This username already exists"
   },
   "languages": {
     "en": "English",

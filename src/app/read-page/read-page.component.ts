@@ -44,7 +44,6 @@ export class ReadPageComponent implements OnInit {
       this.apiService
         .getSecretText(this.secretUuid, password)
         .subscribe((secret: SecretWithContent) => {
-          console.log(secret);
           this.secretText = secret;
         });
     } else if (this.secretType === 'file') {

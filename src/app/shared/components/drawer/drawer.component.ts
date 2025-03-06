@@ -13,7 +13,6 @@ export class DrawerComponent {
   @Output() openChange = new EventEmitter<boolean>();
 
   toggle(newState?: boolean) {
-    console.log('a');
     this.open = newState !== undefined ? newState : !this.open;
     this.openChange.emit(this.open);
   }

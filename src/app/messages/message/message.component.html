@@ -1,0 +1,20 @@
+<div
+  [class.border-red-500]="message.type == messageType.ERROR"
+  [class.border-slate-500]="message.type == messageType.INFO"
+  [class.border-yellow-500]="message.type == messageType.WARNING"
+  class="rounded rounded-lg shadow-lg bg-white p-3 border-2 w-100 cursor-pointer dark:bg-slate-900 dark:text-white"
+  (click)="removeMessage()"
+>
+  <div class="flex items-center justify-between">
+    <div class="flex items-center">
+      <lucide-icon
+        class="w-10"
+        [class.text-red-500]="message.type == messageType.ERROR"
+        [class.text-slate-500]="message.type == messageType.INFO"
+        [class.text-yellow-500]="message.type == messageType.WARNING"
+        [name]="message.icon"
+      ></lucide-icon>
+      <div class="ml-2">{{ message.content | transloco }}</div>
+    </div>
+  </div>
+</div>

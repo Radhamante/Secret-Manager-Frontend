@@ -57,7 +57,6 @@ export class HeaderComponent {
         },
       });
     }
-    console.log('truc');
     this.historyDrawerOpen = isOpen;
   }
 
@@ -112,7 +111,6 @@ export class HeaderComponent {
     this.currentLanguage = language;
     localStorage.setItem('language', language.code);
     // Ajoutez ici la logique pour changer la langue de votre application
-    console.log('Langue sélectionnée :', language.code);
   }
 
   // DARK MODE

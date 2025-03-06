@@ -5,7 +5,8 @@
       roundedInput
       formControlName="username"
       [class.border-red-500]="
-        registerForm.get('username')?.invalid && registerFormSubmited
+        (registerForm.get('username')?.invalid || errorMessage) &&
+        registerFormSubmited
       "
     />
   </app-input>
@@ -34,8 +35,8 @@
     {{ "header.register.form.submit" | transloco }}
   </button>
   @if (errorMessage) {
-    <div class="text-red-500">
-      <p>{{errorMessage}}</p>
-    </div>
+  <div class="text-red-500">
+    <p>{{ errorMessage }}</p>
+  </div>
   }
 </form>

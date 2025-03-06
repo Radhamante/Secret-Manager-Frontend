@@ -5,7 +5,7 @@
       roundedInput
       formControlName="username"
       [class.border-red-500]="
-        loginForm.get('username')?.invalid && loginFormSubmited
+        (loginForm.get('username')?.invalid || errorMessage) && loginFormSubmited
       "
     />
   </app-input>
@@ -15,11 +15,16 @@
       formControlName="password"
       roundedInput
       [class.border-red-500]="
-        loginForm.get('password')?.invalid && loginFormSubmited
+        (loginForm.get('password')?.invalid || errorMessage) && loginFormSubmited
       "
     />
   </app-input>
   <button type="submit" gradient class="w-full">
     {{ "header.login.form.submit" | transloco }}
   </button>
+  @if (errorMessage) {
+  <div class="text-red-500">
+    <p>{{ errorMessage }}</p>
+  </div>
+  }
 </form>

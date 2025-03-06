@@ -51,10 +51,16 @@ export class LoginComponent implements OnInit {
           next: (response) => {
             this.isLogged.emit(true);
           },
-          error: (error) => {
-            this.errorMessage = this.translocoService.translate(
-              'header.login.errors.invalidCredentials'
-            );
+          error: (err) => {
+            console.error(err);
+            if (err.status === 401) {
+              this.errorMessage = this.translocoService.translate(
+                'header.login.errors.invalidCredentials'
+              );
+            } else {
+              this.errorMessage =
+                this.translocoService.translate('errors.unknown');
+            }
           },
         });
     } else {

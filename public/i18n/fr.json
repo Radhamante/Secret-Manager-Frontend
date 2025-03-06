@@ -1,6 +1,9 @@
 {
   "errors": {
-    "unknown": "Une erreur inconnue s'est produite. Veuillez réessayer plus tard."
+    "unknown": "Une erreur inconnue s'est produite. Veuillez réessayer plus tard.",
+    "serverDown": "Le serveur est actuellement hors service. Veuillez réessayer plus tard.",
+    "invalidCredentials": "Identifiants invalides",
+    "usernameAlreadyExists": "Ce nom d'utilisateur existe déjà"
   },
   "languages": {
     "en": "Anglais",

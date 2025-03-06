@@ -32,6 +32,10 @@ export class CreatePageComponent {
         this.$currentSecret.next(secret);
         this.isModalOpen = true;
       },
+      error: (error) => {
+        this.formIsLoading = false;
+        console.error('Error creating secret', error);
+      },
     });
   }
 }
