@@ -7,7 +7,7 @@ export class Message {
   constructor(
     public content: string,
     public type: MessageType,
-    icon?: typeof Info
+    icon?: typeof Info,
   ) {
     if (icon) {
       this.icon = icon;

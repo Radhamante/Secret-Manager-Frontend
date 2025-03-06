@@ -45,7 +45,7 @@ export class ApiService {
     body.append('password', secretData.password);
     body.append(
       'duration',
-      (secretData.lifetime * secretData.lifetimeType).toString()
+      (secretData.lifetime * secretData.lifetimeType).toString(),
     );
     body.append('usage_limit', secretData.usageLimit.toString());
     return this.http
@@ -58,22 +58,22 @@ export class ApiService {
             response.destruction ? new Date(response.destruction) : undefined,
             response.usage_limit,
             response.usage_count,
-            response.type
+            response.type,
           );
         }),
         catchError((error) => {
           console.error('Error creating secret:', error);
           if (error.status === 0) {
             this.messageService.add(
-              new Message('errors.serverDown', MessageType.ERROR, ServerOff)
+              new Message('errors.serverDown', MessageType.ERROR, ServerOff),
             );
           } else {
             this.messageService.add(
-              new Message('errors.unknown', MessageType.ERROR)
+              new Message('errors.unknown', MessageType.ERROR),
             );
           }
           throw error;
-        })
+        }),
       );
   }
 
@@ -86,21 +86,21 @@ export class ApiService {
         console.error('Error creating secret:', error);
         if (error.status === 0) {
           this.messageService.add(
-            new Message('errors.serverDown', MessageType.ERROR, ServerOff)
+            new Message('errors.serverDown', MessageType.ERROR, ServerOff),
           );
         } else {
           this.messageService.add(
-            new Message('errors.unknown', MessageType.ERROR)
+            new Message('errors.unknown', MessageType.ERROR),
           );
         }
         throw error;
-      })
+      }),
     );
   }
 
   getSecretFile(
     uuid: string,
-    password: string
+    password: string,
   ): Observable<SecretFileResponse> {
     return this.http
       .get(`${this.APIbaseUrl}/secrets/${uuid}?password=${password}`, {
@@ -110,7 +110,7 @@ export class ApiService {
       .pipe(
         map((response: any) => {
           const contentDisposition = response.headers.get(
-            'Content-Disposition'
+            'Content-Disposition',
           );
           let filename = 'download';
 
@@ -123,15 +123,15 @@ export class ApiService {
           console.error('Error getting secret:', error);
           if (error.status === 0) {
             this.messageService.add(
-              new Message('errors.serverDown', MessageType.ERROR, ServerOff)
+              new Message('errors.serverDown', MessageType.ERROR, ServerOff),
             );
           } else {
             this.messageService.add(
-              new Message('errors.unknown', MessageType.ERROR)
+              new Message('errors.unknown', MessageType.ERROR),
             );
           }
           throw error;
-        })
+        }),
       );
   }
 
@@ -147,22 +147,22 @@ export class ApiService {
             response.usage_limit,
             response.usage_count,
             response.type,
-            response.content
+            response.content,
           );
         }),
         catchError((error) => {
           console.error('Error getting secret:', error);
           if (error.status === 0) {
             this.messageService.add(
-              new Message('errors.serverDown', MessageType.ERROR, ServerOff)
+              new Message('errors.serverDown', MessageType.ERROR, ServerOff),
             );
           } else {
             this.messageService.add(
-              new Message('errors.unknown', MessageType.ERROR)
+              new Message('errors.unknown', MessageType.ERROR),
             );
           }
           throw error;
-        })
+        }),
       );
   }
 
@@ -176,7 +176,7 @@ export class ApiService {
             secret.destruction ? new Date(secret.destruction) : undefined,
             secret.usage_limit,
             secret.usage_count,
-            secret.type
+            secret.type,
           );
         });
       }),
@@ -184,15 +184,15 @@ export class ApiService {
         console.error('Error getting secrets:', error);
         if (error.status === 0) {
           this.messageService.add(
-            new Message('errors.serverDown', MessageType.ERROR, ServerOff)
+            new Message('errors.serverDown', MessageType.ERROR, ServerOff),
           );
         } else {
           this.messageService.add(
-            new Message('errors.unknown', MessageType.ERROR)
+            new Message('errors.unknown', MessageType.ERROR),
           );
         }
         throw error;
-      })
+      }),
     );
   }
 }

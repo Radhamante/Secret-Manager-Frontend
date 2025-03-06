@@ -9,7 +9,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     const authReq = req.clone({
       headers: req.headers.set(
         'Authorization',
-        `${authService.currentAccessToken?.token_type} ${authService.currentAccessToken?.access_token}`
+        `${authService.currentAccessToken?.token_type} ${authService.currentAccessToken?.access_token}`,
       ),
     });
     return next(authReq);

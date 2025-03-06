@@ -9,7 +9,7 @@ export class SecretWithContent extends Secret {
     usageLimit: number,
     usageCount: number,
     type: SecretType,
-    public content: string
+    public content: string,
   ) {
     super(uuid, creation, destruction, usageLimit, usageCount, type);
   }

@@ -41,7 +41,7 @@ export class HeaderComponent {
     }
   }
 
-  secretCount$ = this.apiService.countSubject$
+  secretCount$ = this.apiService.countSubject$;
 
   // HISTORY
   historyDrawerOpen: boolean = false;
@@ -104,7 +104,7 @@ export class HeaderComponent {
   ];
   currentLanguage =
     this.languages.find(
-      (language) => language.code === localStorage.getItem('language')
+      (language) => language.code === localStorage.getItem('language'),
     ) || this.languages[0];
   changeLanguage(language: any) {
     this.translocoService.setActiveLang(language.code);

@@ -4,7 +4,10 @@ import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
   selector: '[gradient]',
 })
 export class GradientDirective implements OnInit {
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+  ) {}
 
   ngOnInit() {
     // Liste des classes à appliquer

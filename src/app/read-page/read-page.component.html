@@ -1,12 +1,17 @@
-<div
-  class="flex p-5 justify-center items-center"
->
+<div class="flex p-5 justify-center items-center">
   @if (secretText) {
     <app-secret card class="max-w-4xl" [secret]="secretText"></app-secret>
-  }@else if (secretFile) {
-    <app-secret-file card class="max-w-xl" [secret]="secretFile"></app-secret-file>
-  }
-  @else {
-    <app-password-prompt class="max-w-lg" card (passwordEntered)="onPasswordEntered($event)" ></app-password-prompt>
+  } @else if (secretFile) {
+    <app-secret-file
+      card
+      class="max-w-xl"
+      [secret]="secretFile"
+    ></app-secret-file>
+  } @else {
+    <app-password-prompt
+      class="max-w-lg"
+      card
+      (passwordEntered)="onPasswordEntered($event)"
+    ></app-password-prompt>
   }
 </div>

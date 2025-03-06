@@ -8,9 +8,8 @@ describe('SecretComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SecretComponent]
-    })
-    .compileComponents();
+      imports: [SecretComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SecretComponent);
     component = fixture.componentInstance;

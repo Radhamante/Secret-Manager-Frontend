@@ -4,7 +4,10 @@ import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
   selector: '[roundedButton]',
 })
 export class RoundedButtonDirective implements OnInit {
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+  ) {}
 
   ngOnInit() {
     // Liste des classes à appliquer
@@ -19,7 +22,7 @@ export class RoundedButtonDirective implements OnInit {
       'rounded-md',
       'hover:bg-purple-100',
       'dark:hover:bg-purple-500/25',
-      'dark:text-slate-300'
+      'dark:text-slate-300',
     ];
 
     // Ajouter chaque classe à l'élément

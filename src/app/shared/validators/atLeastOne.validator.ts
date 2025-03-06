@@ -7,7 +7,7 @@ import {
 
 export function atLeastOneValidator(
   first: string,
-  second: string
+  second: string,
 ): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const form = control as FormGroup;

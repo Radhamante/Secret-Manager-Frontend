@@ -8,7 +8,13 @@ import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-secret-modal',
-  imports: [GradientDirective, TranslocoPipe, DatePipe, ModalComponent, AsyncPipe],
+  imports: [
+    GradientDirective,
+    TranslocoPipe,
+    DatePipe,
+    ModalComponent,
+    AsyncPipe,
+  ],
   templateUrl: './secret-modal.component.html',
   styleUrl: './secret-modal.component.scss',
 })

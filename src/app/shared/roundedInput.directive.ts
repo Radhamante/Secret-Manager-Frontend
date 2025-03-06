@@ -4,7 +4,10 @@ import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
   selector: '[roundedInput]',
 })
 export class RoundedInputDirective implements OnInit {
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+  ) {}
 
   ngOnInit() {
     // Liste des classes à appliquer

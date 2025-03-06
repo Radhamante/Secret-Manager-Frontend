@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
             console.error(err);
             if (err.status === 401) {
               this.errorMessage = this.translocoService.translate(
-                'header.login.errors.invalidCredentials'
+                'header.login.errors.invalidCredentials',
               );
             } else {
               this.errorMessage =
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         });
     } else {
       this.errorMessage = this.translocoService.translate(
-        'header.login.errors.missingInputs'
+        'header.login.errors.missingInputs',
       );
     }
   }

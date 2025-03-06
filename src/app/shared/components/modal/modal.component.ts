@@ -10,7 +10,6 @@ import { NgClass } from '@angular/common';
   styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
-
   // Must do that to able to use dynamic class in the template
   // https://tailwindcss.com/docs/detecting-classes-in-source-files#dynamic-class-names
   private widths = [

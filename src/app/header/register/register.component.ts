@@ -28,7 +28,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent {
   @Output() isregistered: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
+
   private authService: AuthService = inject(AuthService);
   private fb: FormBuilder = inject(FormBuilder);
   private translocoService: TranslocoService = inject(TranslocoService);
@@ -55,7 +55,7 @@ export class RegisterComponent {
       this.authService
         .register(
           this.registerForm.value.username,
-          this.registerForm.value.password
+          this.registerForm.value.password,
         )
         .subscribe({
           next: (response) => {
@@ -67,12 +67,11 @@ export class RegisterComponent {
             console.error(err);
             if (err.status === 409) {
               this.errorMessage = this.translocoService.translate(
-                'header.register.errors.usernameTaken'
+                'header.register.errors.usernameTaken',
               );
-            }else{
-              this.errorMessage = this.translocoService.translate(
-                'errors.unknown'
-              );
+            } else {
+              this.errorMessage =
+                this.translocoService.translate('errors.unknown');
             }
           },
         });
@@ -82,7 +81,7 @@ export class RegisterComponent {
         ?.setErrors({ incorrect: true });
       this.registerForm.get('password')?.setErrors({ incorrect: true });
       this.errorMessage = this.translocoService.translate(
-        'header.register.errors.passwordsDoNotMatch'
+        'header.register.errors.passwordsDoNotMatch',
       );
     }
   }

@@ -31,44 +31,56 @@
       </button>
     </div>
     @if (isTextMode) {
-    <app-input [label]="'form.labels.content' | transloco">
-      <div class="flex-1">
-        <textarea
-          formControlName="textContent"
-          [class.border-red-500]="secretForm.errors?.['textContentOrfileContentRequired'] && secretFormSubmited"
-          roundedInput
-          rows="5"
-        ></textarea>
-        @if(secretForm.errors?.['textContentOrfileContentRequired'] &&
-        secretFormSubmited){
-        <span class="text-sm text-red-500">{{
-          "form.error.required" | transloco
-        }}</span>
-        }
-      </div>
-    </app-input>
+      <app-input [label]="'form.labels.content' | transloco">
+        <div class="flex-1">
+          <textarea
+            formControlName="textContent"
+            [class.border-red-500]="
+              secretForm.errors?.['textContentOrfileContentRequired'] &&
+              secretFormSubmited
+            "
+            roundedInput
+            rows="5"
+          ></textarea>
+          @if (
+            secretForm.errors?.["textContentOrfileContentRequired"] &&
+            secretFormSubmited
+          ) {
+            <span class="text-sm text-red-500">{{
+              "form.error.required" | transloco
+            }}</span>
+          }
+        </div>
+      </app-input>
     } @else {
-    <app-input [label]="'form.labels.content' | transloco">
-      <div class="w-full">
-        <input
-          type="file"
-          formControlName="fileContent"
-          roundedInput
-          [class.border-red-500]="(secretForm.errors?.['textContentOrfileContentRequired'] || secretForm.get('fileContent')?.invalid)  && secretFormSubmited"
-          (change)="onFilePicked($event)"
-        />
-        @if(secretForm.errors?.['textContentOrfileContentRequired'] &&
-        secretFormSubmited){
-        <span class="text-sm text-red-500">{{
-          "form.error.required" | transloco
-        }}</span>
-        } @if(secretForm.get('fileContent')?.invalid && secretFormSubmited){
-        <span class="text-sm text-red-500">{{
-          "form.error.fileToBig" | transloco
-        }}</span>
-        }
-      </div>
-    </app-input>
+      <app-input [label]="'form.labels.content' | transloco">
+        <div class="w-full">
+          <input
+            type="file"
+            formControlName="fileContent"
+            roundedInput
+            [class.border-red-500]="
+              (secretForm.errors?.['textContentOrfileContentRequired'] ||
+                secretForm.get('fileContent')?.invalid) &&
+              secretFormSubmited
+            "
+            (change)="onFilePicked($event)"
+          />
+          @if (
+            secretForm.errors?.["textContentOrfileContentRequired"] &&
+            secretFormSubmited
+          ) {
+            <span class="text-sm text-red-500">{{
+              "form.error.required" | transloco
+            }}</span>
+          }
+          @if (secretForm.get("fileContent")?.invalid && secretFormSubmited) {
+            <span class="text-sm text-red-500">{{
+              "form.error.fileToBig" | transloco
+            }}</span>
+          }
+        </div>
+      </app-input>
     }
     <app-input [label]="'form.labels.password' | transloco">
       <div class="flex-1">
@@ -81,10 +93,10 @@
           formControlName="password"
           roundedInput
         />
-        @if(secretForm.get('password')?.invalid && secretFormSubmited){
-        <span class="text-sm text-red-500">{{
-          "form.error.required" | transloco
-        }}</span>
+        @if (secretForm.get("password")?.invalid && secretFormSubmited) {
+          <span class="text-sm text-red-500">{{
+            "form.error.required" | transloco
+          }}</span>
         }
       </div>
     </app-input>
@@ -92,7 +104,10 @@
       <div class="flex flex-1 gap-1">
         <input
           type="number"
-          [class.border-red-500]="secretForm.errors?.['lifetimeOrusageLimitRequired'] && secretFormSubmited"
+          [class.border-red-500]="
+            secretForm.errors?.['lifetimeOrusageLimitRequired'] &&
+            secretFormSubmited
+          "
           formControlName="lifetime"
           class="flex-2"
           roundedInput
@@ -101,20 +116,23 @@
         />
         <select
           formControlName="lifetimeType"
-          [class.border-red-500]="secretForm.errors?.['lifetimeOrusageLimitRequired'] && secretFormSubmited"
+          [class.border-red-500]="
+            secretForm.errors?.['lifetimeOrusageLimitRequired'] &&
+            secretFormSubmited
+          "
           class="flex-1"
           roundedInput
         >
-          @for(lifetimetype of secretLifetimeType; track lifetimetype[0]) {
-          <option
-            [value]="lifetimetype[1]"
-            class="dark:bg-slate-900 dark:text-slate-300"
-          >
-            {{
-              "form.labels.lifetimeTypes." + (lifetimetype[0] | lowercase)
-                | transloco
-            }}
-          </option>
+          @for (lifetimetype of secretLifetimeType; track lifetimetype[0]) {
+            <option
+              [value]="lifetimetype[1]"
+              class="dark:bg-slate-900 dark:text-slate-300"
+            >
+              {{
+                "form.labels.lifetimeTypes." + (lifetimetype[0] | lowercase)
+                  | transloco
+              }}
+            </option>
           }
         </select>
       </div>
@@ -127,24 +145,26 @@
           formControlName="usageLimit"
           roundedInput
         />
-        @if(secretForm.errors?.['lifetimeOrusageLimitRequired'] &&
-        secretFormSubmited){
-        <span class="text-sm text-red-500">{{
-          "form.error.lifetimeOrUsage" | transloco
-        }}</span>
+        @if (
+          secretForm.errors?.["lifetimeOrusageLimitRequired"] &&
+          secretFormSubmited
+        ) {
+          <span class="text-sm text-red-500">{{
+            "form.error.lifetimeOrUsage" | transloco
+          }}</span>
         }
       </div>
     </app-input>
   </div>
 
   <button gradient class="relative w-full">
-    @if(formIsLoading){
-    <div
-      role="status"
-      class="absolute inset-0 flex items-center justify-center"
-    >
-      <app-spinner></app-spinner>
-    </div>
+    @if (formIsLoading) {
+      <div
+        role="status"
+        class="absolute inset-0 flex items-center justify-center"
+      >
+        <app-spinner></app-spinner>
+      </div>
     }
     <p [class.scale-0]="formIsLoading">
       {{ "form.labels.submit" | transloco }}

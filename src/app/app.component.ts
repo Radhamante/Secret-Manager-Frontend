@@ -3,11 +3,16 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { BackgroundComponent } from './shared/background/background.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
-import { MessagesComponent } from "./messages/messages.component";
+import { MessagesComponent } from './messages/messages.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, BackgroundComponent, MessagesComponent],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    BackgroundComponent,
+    MessagesComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

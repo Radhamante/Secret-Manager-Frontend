@@ -1,5 +1,4 @@
-
 export enum SecretType {
-    TEXT = "text",
-    FILE = "file",
+  TEXT = 'text',
+  FILE = 'file',
 }

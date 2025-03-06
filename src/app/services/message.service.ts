@@ -16,7 +16,7 @@ export class MessageService {
 
   remove(messageId: number) {
     this.messages$.next(
-      this.messages$.value.filter((message) => message.id !== messageId)
+      this.messages$.value.filter((message) => message.id !== messageId),
     );
   }
 

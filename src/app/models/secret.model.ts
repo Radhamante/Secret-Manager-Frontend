@@ -7,6 +7,6 @@ export class Secret {
     public destruction: Date | undefined,
     public usageLimit: number | undefined,
     public usageCount: number,
-    public type: SecretType
+    public type: SecretType,
   ) {}
 }

@@ -14,7 +14,7 @@ export class MessageComponent {
   @Input({ required: true }) message!: Message;
   @Output() remove = new EventEmitter<number>();
 
-  messageType = MessageType
+  messageType = MessageType;
 
   removeMessage() {
     this.remove.emit(this.message.id);

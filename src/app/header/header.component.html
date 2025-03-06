@@ -9,31 +9,33 @@
       Secret Manager
     </h2>
   </a>
-  @let secretCount = secretCount$ | async; @if(secretCount) {
-  <div>
-    <p
-      class="text-transparent bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text"
-    >
-      <span>{{ "header.count.already" | transloco }} </span
-      ><span class="font-bold">{{ secretCount }}</span> {{ "header.count.created" | transloco }}
-    </p>
-  </div>
+  @let secretCount = secretCount$ | async;
+  @if (secretCount) {
+    <div>
+      <p
+        class="text-transparent bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text"
+      >
+        <span>{{ "header.count.already" | transloco }} </span
+        ><span class="font-bold">{{ secretCount }}</span>
+        {{ "header.count.created" | transloco }}
+      </p>
+    </div>
   }
   <div class="flex gap-4 text-sm">
-    @if(!isUserLogged) {
-    <button roundedButton (click)="onToggleLoginModal(true)">
-      {{ "header.login.button" | transloco }}
-    </button>
-    <button gradient (click)="onToggleRegisterModal(true)">
-      {{ "header.register.button" | transloco }}
-    </button>
-    }@else {
-    <button roundedButton (click)="onLogout()">
-      {{ "header.logout.button" | transloco }}
-    </button>
-    <button roundedButton (click)="onToggleHistoryDrawer(true)">
-      {{ "header.history.button" | transloco }}
-    </button>
+    @if (!isUserLogged) {
+      <button roundedButton (click)="onToggleLoginModal(true)">
+        {{ "header.login.button" | transloco }}
+      </button>
+      <button gradient (click)="onToggleRegisterModal(true)">
+        {{ "header.register.button" | transloco }}
+      </button>
+    } @else {
+      <button roundedButton (click)="onLogout()">
+        {{ "header.logout.button" | transloco }}
+      </button>
+      <button roundedButton (click)="onToggleHistoryDrawer(true)">
+        {{ "header.history.button" | transloco }}
+      </button>
     }
     <button roundedButton (click)="toggleDarkMode()">
       {{ isDarkMode ? "🌞" : "🌙" }}
@@ -107,51 +109,60 @@
     </p>
   </div>
 </app-modal>
-@if(isUserLogged) {
-<app-drawer [(open)]="historyDrawerOpen">
-  <p header>{{ "header.history.title" | transloco }}</p>
-  <div body>
-    @if(secretHistory.length === 0) {
-    <p class="p-4 text-lg text-center">
-      {{ "header.history.empty" | transloco }}
-    </p>
-    }@else { @for(secret of secretHistory; track secret.uuid) {
-    <div
-      card
-      class="m-2 border border-purple-800 dark:bg-slate-900 dark:text-slate-300"
-    >
-      <p>
-        <span class="font-bold">
-          {{ "header.history.created" | transloco }} :
-        </span>
-        <span class="font-bold">{{ secret.creation | date : "dd/MM" }}</span>
-        <span> {{ "header.history.limits.at" | transloco }} </span>
-        <span class="font-bold">{{ secret.creation | date : "HH:mm:ss" }}</span>
-      </p>
-      <p>
-        <span class="font-bold">
-          {{ "header.history.usages" | transloco }} :
-        </span>
-        <span>{{ secret.usageCount }}</span>
-      </p>
-      @if(secret.destruction) {
-      <p class="mt-2">{{ "header.history.limits.main" | transloco }}</p>
-      <span> {{ "header.history.limits.the" | transloco }} </span>
-      <span class="font-bold">{{ secret.destruction | date : "dd/MM" }}</span>
-      <span> {{ "header.history.limits.at" | transloco }} </span>
-      <span class="font-bold">{{
-        secret.destruction | date : "HH:mm:ss"
-      }}</span>
-      } @if(secret.usageLimit && secret.destruction) {
-      <span> {{ "modal.limits.or" | transloco }} </span>} @if(secret.usageLimit)
-      {
-      <span> {{ "header.history.limits.after" | transloco }} </span>
-      <span class="font-bold">{{ secret.usageLimit }} </span>
-      <span>{{ "header.history.limits.usages" | transloco }}</span>
+@if (isUserLogged) {
+  <app-drawer [(open)]="historyDrawerOpen">
+    <p header>{{ "header.history.title" | transloco }}</p>
+    <div body>
+      @if (secretHistory.length === 0) {
+        <p class="p-4 text-lg text-center">
+          {{ "header.history.empty" | transloco }}
+        </p>
+      } @else {
+        @for (secret of secretHistory; track secret.uuid) {
+          <div
+            card
+            class="m-2 border border-purple-800 dark:bg-slate-900 dark:text-slate-300"
+          >
+            <p>
+              <span class="font-bold">
+                {{ "header.history.created" | transloco }} :
+              </span>
+              <span class="font-bold">{{
+                secret.creation | date: "dd/MM"
+              }}</span>
+              <span> {{ "header.history.limits.at" | transloco }} </span>
+              <span class="font-bold">{{
+                secret.creation | date: "HH:mm:ss"
+              }}</span>
+            </p>
+            <p>
+              <span class="font-bold">
+                {{ "header.history.usages" | transloco }} :
+              </span>
+              <span>{{ secret.usageCount }}</span>
+            </p>
+            @if (secret.destruction) {
+              <p class="mt-2">{{ "header.history.limits.main" | transloco }}</p>
+              <span> {{ "header.history.limits.the" | transloco }} </span>
+              <span class="font-bold">{{
+                secret.destruction | date: "dd/MM"
+              }}</span>
+              <span> {{ "header.history.limits.at" | transloco }} </span>
+              <span class="font-bold">{{
+                secret.destruction | date: "HH:mm:ss"
+              }}</span>
+            }
+            @if (secret.usageLimit && secret.destruction) {
+              <span> {{ "modal.limits.or" | transloco }} </span>
+            }
+            @if (secret.usageLimit) {
+              <span> {{ "header.history.limits.after" | transloco }} </span>
+              <span class="font-bold">{{ secret.usageLimit }} </span>
+              <span>{{ "header.history.limits.usages" | transloco }}</span>
+            }
+          </div>
+        }
       }
     </div>
-    } }
-  </div>
-</app-drawer>
-
+  </app-drawer>
 }

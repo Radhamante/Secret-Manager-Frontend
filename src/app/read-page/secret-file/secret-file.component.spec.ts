@@ -8,9 +8,8 @@ describe('SecretFileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SecretFileComponent]
-    })
-    .compileComponents();
+      imports: [SecretFileComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SecretFileComponent);
     component = fixture.componentInstance;

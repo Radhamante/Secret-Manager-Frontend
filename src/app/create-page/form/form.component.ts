@@ -73,7 +73,7 @@ export class FormComponent implements OnInit {
           atLeastOneValidator('textContent', 'fileContent'),
         ],
         updateOn: 'submit',
-      }
+      },
     );
   }
 
