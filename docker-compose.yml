@@ -5,7 +5,7 @@ networks:
 services:
     secret-manager-front:
         build: .
-        container_name: secret-manager-front
+        container_name: Secret-Manager-Frontend
         ports:
             - "8008:8008"
         labels:
