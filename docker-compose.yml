@@ -17,6 +17,6 @@ services:
             - "traefik.http.services.secret-front.loadbalancer.server.port=8008"
         networks:
             traefik_proxy:
-                ipv4_address: 192.168.1.110
+                ipv4_address: 192.168.1.101
         environment:
             - API_URL=$API_URL
