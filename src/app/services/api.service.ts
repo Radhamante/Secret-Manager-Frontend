@@ -65,11 +65,11 @@ export class ApiService {
           console.error('Error creating secret:', error);
           if (error.status === 0) {
             this.messageService.add(
-              new Message('errors.serverDown', MessageType.ERROR, ServerOff),
+              new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
             );
           } else {
             this.messageService.add(
-              new Message('errors.unknown', MessageType.ERROR),
+              new Message('message.errors.unknown', MessageType.ERROR),
             );
           }
           throw error;
@@ -86,11 +86,11 @@ export class ApiService {
         console.error('Error creating secret:', error);
         if (error.status === 0) {
           this.messageService.add(
-            new Message('errors.serverDown', MessageType.ERROR, ServerOff),
+            new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
           );
         } else {
           this.messageService.add(
-            new Message('errors.unknown', MessageType.ERROR),
+            new Message('message.errors.unknown', MessageType.ERROR),
           );
         }
         throw error;
@@ -123,11 +123,11 @@ export class ApiService {
           console.error('Error getting secret:', error);
           if (error.status === 0) {
             this.messageService.add(
-              new Message('errors.serverDown', MessageType.ERROR, ServerOff),
+              new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
             );
           } else {
             this.messageService.add(
-              new Message('errors.unknown', MessageType.ERROR),
+              new Message('message.errors.unknown', MessageType.ERROR),
             );
           }
           throw error;
@@ -154,11 +154,11 @@ export class ApiService {
           console.error('Error getting secret:', error);
           if (error.status === 0) {
             this.messageService.add(
-              new Message('errors.serverDown', MessageType.ERROR, ServerOff),
+              new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
             );
           } else {
             this.messageService.add(
-              new Message('errors.unknown', MessageType.ERROR),
+              new Message('message.errors.unknown', MessageType.ERROR),
             );
           }
           throw error;
@@ -184,11 +184,32 @@ export class ApiService {
         console.error('Error getting secrets:', error);
         if (error.status === 0) {
           this.messageService.add(
-            new Message('errors.serverDown', MessageType.ERROR, ServerOff),
+            new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
           );
         } else {
           this.messageService.add(
-            new Message('errors.unknown', MessageType.ERROR),
+            new Message('message.errors.unknown', MessageType.ERROR),
+          );
+        }
+        throw error;
+      }),
+    );
+  }
+
+  deleteSecret(uuid: string): Observable<void> {
+    return this.http.delete(`${this.APIbaseUrl}/secrets/${uuid}`).pipe(
+      map(() => {
+        return;
+      }),
+      catchError((error) => {
+        console.error('Error deleting secret:', error);
+        if (error.status === 0) {
+          this.messageService.add(
+            new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
+          );
+        } else {
+          this.messageService.add(
+            new Message('message.errors.unknown', MessageType.ERROR),
           );
         }
         throw error;

@@ -47,11 +47,11 @@ export class AuthService {
         console.error('Error login in:', error);
         if (error.status === 0) {
           this.messageService.add(
-            new Message('errors.serverDown', MessageType.ERROR, ServerOff),
+            new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
           );
         } else if (error.status != 401) {
           this.messageService.add(
-            new Message('errors.unknown', MessageType.ERROR),
+            new Message('message.errors.unknown', MessageType.ERROR),
           );
         }
         throw error;
@@ -80,11 +80,11 @@ export class AuthService {
           console.error('Error registering:', error);
           if (error.status === 0) {
             this.messageService.add(
-              new Message('errors.serverDown', MessageType.ERROR, ServerOff),
+              new Message('message.errors.serverDown', MessageType.ERROR, ServerOff),
             );
           } else if (error.status != 409) {
             this.messageService.add(
-              new Message('errors.unknown', MessageType.ERROR),
+              new Message('message.errors.unknown', MessageType.ERROR),
             );
           }
           throw error;

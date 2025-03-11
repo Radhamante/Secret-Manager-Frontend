@@ -1,0 +1,9 @@
+@if (secretHistory.length === 0) {
+    <p class="p-4 text-lg text-center">
+      {{ "header.history.empty" | transloco }}
+    </p>
+  } @else {
+    @for (secret of secretHistory; track secret.uuid) {
+      <app-history-item [secret]="secret" (secretDeleted)="onDelete($event)"></app-history-item>
+    }
+  }

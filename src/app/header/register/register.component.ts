@@ -71,7 +71,7 @@ export class RegisterComponent {
               );
             } else {
               this.errorMessage =
-                this.translocoService.translate('errors.unknown');
+                this.translocoService.translate('message.errors.unknown');
             }
           },
         });

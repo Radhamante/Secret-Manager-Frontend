@@ -1,0 +1,42 @@
+<div
+  card
+  class="m-2 border border-purple-800 dark:bg-slate-900 dark:text-slate-300"
+>
+  <p>
+    <span class="font-bold">
+      {{ "header.history.created" | transloco }} :
+    </span>
+    <span class="font-bold">{{ secret.creation | date : "dd/MM" }}</span>
+    <span> {{ "header.history.limits.at" | transloco }} </span>
+    <span class="font-bold">{{ secret.creation | date : "HH:mm:ss" }}</span>
+  </p>
+  <p>
+    <span class="font-bold"> {{ "header.history.usages" | transloco }} : </span>
+    <span>{{ secret.usageCount }}</span>
+  </p>
+  @if (secret.destruction) {
+  <p class="mt-2">{{ "header.history.limits.main" | transloco }}</p>
+  <span> {{ "header.history.limits.the" | transloco }} </span>
+  <span class="font-bold">{{ secret.destruction | date : "dd/MM" }}</span>
+  <span> {{ "header.history.limits.at" | transloco }} </span>
+  <span class="font-bold">{{ secret.destruction | date : "HH:mm:ss" }}</span>
+  } @if (secret.usageLimit && secret.destruction) {
+  <span> {{ "modal.limits.or" | transloco }} </span>
+  } @if (secret.usageLimit) {
+  <span> {{ "header.history.limits.after" | transloco }} </span>
+  <span class="font-bold">{{ secret.usageLimit }} </span>
+  <span>{{ "header.history.limits.usages" | transloco }}</span>
+  }
+  <div class="flex gap-4 flex-wrap mt-2">
+    <button class="flex-1 text-xs flex justify-center" (click)="deleteHistory()" roundedButton>
+        @if(!isDeleting) {
+            {{ "header.history.delete" | transloco }}
+        }@else {
+            <app-spinner></app-spinner>
+        }
+    </button>
+    <button class="flex-1 text-xs" (click)="copyInClipboard()" gradient>
+      {{ "header.history.copyLink" | transloco }}
+    </button>
+  </div>
+</div>

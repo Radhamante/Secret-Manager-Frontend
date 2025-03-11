@@ -12,6 +12,7 @@ import { DrawerComponent } from '../shared/components/drawer/drawer.component';
 import { Secret } from '../models/secret.model';
 import { ApiService } from '../services/api.service';
 import { CardDirective } from '../shared/card.directive';
+import { HistoryComponent } from './history-list/history-list.component';
 
 @Component({
   selector: 'app-header',
@@ -27,6 +28,7 @@ import { CardDirective } from '../shared/card.directive';
     DrawerComponent,
     CardDirective,
     DatePipe,
+    HistoryComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -104,7 +106,7 @@ export class HeaderComponent {
   ];
   currentLanguage =
     this.languages.find(
-      (language) => language.code === localStorage.getItem('language'),
+      (language) => language.code === localStorage.getItem('language')
     ) || this.languages[0];
   changeLanguage(language: any) {
     this.translocoService.setActiveLang(language.code);

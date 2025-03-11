@@ -1,9 +1,14 @@
 {
-  "errors": {
-    "unknown": "Une erreur inconnue s'est produite. Veuillez réessayer plus tard.",
-    "serverDown": "Le serveur est actuellement hors service. Veuillez réessayer plus tard.",
-    "invalidCredentials": "Identifiants invalides",
-    "usernameAlreadyExists": "Ce nom d'utilisateur existe déjà"
+  "message": {
+    "info": {
+      "copyToClipboard": "Lien copié dans le presse-papier"
+    },
+    "errors": {
+      "unknown": "Une erreur inconnue s'est produite. Veuillez réessayer plus tard.",
+      "serverDown": "Le serveur est actuellement hors service. Veuillez réessayer plus tard.",
+      "invalidCredentials": "Identifiants invalides",
+      "usernameAlreadyExists": "Ce nom d'utilisateur existe déjà"
+    }
   },
   "languages": {
     "en": "Anglais",
@@ -20,6 +25,8 @@
       "created": "Créé le",
       "usages": "Nombre de lectures",
       "empty": "Aucun secret à afficher",
+      "delete": "Supprimer",
+      "copyLink": "Copier le lien",
       "limits": {
         "main": "Ce secret sera détruit",
         "the": "le",
