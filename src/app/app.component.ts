@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { BackgroundComponent } from './shared/background/background.component';
-import { ModalComponent } from './shared/components/modal/modal.component';
 import { MessagesComponent } from './messages/messages.component';
 
 @Component({

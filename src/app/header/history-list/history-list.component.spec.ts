@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HistoryComponent } from './history.component';
+import { HistoryComponent } from './history-list.component';
+import { setupGlobalProviders } from '../../../../test-setup';
 
 describe('HistoryComponent', () => {
   let component: HistoryComponent;
   let fixture: ComponentFixture<HistoryComponent>;
 
   beforeEach(async () => {
+    setupGlobalProviders();
     await TestBed.configureTestingModule({
-      imports: [HistoryComponent]
-    })
-    .compileComponents();
+      imports: [HistoryComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HistoryComponent);
     component = fixture.componentInstance;

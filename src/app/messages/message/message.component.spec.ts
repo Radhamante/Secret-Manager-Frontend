@@ -1,18 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MessageComponent } from './message.component';
+import { setupGlobalProviders } from '../../../../test-setup';
+import { MessageType } from '../../models/message-type.enum';
+import { Message } from '../../models/message.model';
 
-import { ErrorComponent } from './error.component';
-
-describe('ErrorComponent', () => {
-  let component: ErrorComponent;
-  let fixture: ComponentFixture<ErrorComponent>;
+describe('MessageComponent', () => {
+  let component: MessageComponent;
+  let fixture: ComponentFixture<MessageComponent>;
 
   beforeEach(async () => {
+    setupGlobalProviders();
     await TestBed.configureTestingModule({
-      imports: [ErrorComponent],
+      imports: [MessageComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ErrorComponent);
+    fixture = TestBed.createComponent(MessageComponent);
     component = fixture.componentInstance;
+    component.message = {
+      type: MessageType.INFO,
+      content: 'Test message'
+    } as Message;
+    
     fixture.detectChanges();
   });
 

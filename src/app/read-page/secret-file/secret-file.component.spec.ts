@@ -1,12 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SecretFileComponent } from './secret-file.component';
+import { setupGlobalProviders } from '../../../../test-setup';
 
 describe('SecretFileComponent', () => {
   let component: SecretFileComponent;
   let fixture: ComponentFixture<SecretFileComponent>;
 
   beforeEach(async () => {
+    setupGlobalProviders();
     await TestBed.configureTestingModule({
       imports: [SecretFileComponent],
     }).compileComponents();

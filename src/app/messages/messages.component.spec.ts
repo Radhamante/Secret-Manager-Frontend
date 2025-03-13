@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ErrorsComponent } from './errors.component';
+import { MessagesComponent } from './messages.component';
+import { setupGlobalProviders } from '../../../test-setup';
 
 describe('ErrorsComponent', () => {
-  let component: ErrorsComponent;
-  let fixture: ComponentFixture<ErrorsComponent>;
+  let component: MessagesComponent;
+  let fixture: ComponentFixture<MessagesComponent>;
 
   beforeEach(async () => {
+    setupGlobalProviders();
     await TestBed.configureTestingModule({
-      imports: [ErrorsComponent],
+      imports: [MessagesComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ErrorsComponent);
+    fixture = TestBed.createComponent(MessagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

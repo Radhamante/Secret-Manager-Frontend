@@ -1,8 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { setupGlobalProviders } from '../../test-setup';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
+    setupGlobalProviders();
     await TestBed.configureTestingModule({
       imports: [AppComponent],
     }).compileComponents();
@@ -25,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, secretManager',
+      'Hello, secretManager'
     );
   });
 });
