@@ -57,15 +57,33 @@ export class FormComponent implements OnInit {
   secretLifetimeType = Object.entries(SecretLifetimeType).slice(5);
   isTextMode: boolean = true;
 
+  onLifetimeChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.value == '0') {
+      this.secretForm.patchValue({
+        lifetime: '',
+      });
+    }
+  }
+  onUsageLimitChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.value == '0') {
+      this.secretForm.patchValue({
+        usageLimit: '',
+      });
+    }
+  }
+
+
   ngOnInit() {
     this.secretForm = this.fb.group(
       {
         textContent: new FormControl(''),
         fileContent: [null, [fileSizeValidator(5)]],
         password: ['', Validators.required],
-        lifetime: [0],
+        lifetime: [2],
         lifetimeType: [SecretLifetimeType.HOURS],
-        usageLimit: [0],
+        usageLimit: [1],
       },
       {
         validators: [
@@ -73,7 +91,7 @@ export class FormComponent implements OnInit {
           atLeastOneValidator('textContent', 'fileContent'),
         ],
         updateOn: 'submit',
-      },
+      }
     );
   }
 

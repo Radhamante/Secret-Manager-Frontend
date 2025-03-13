@@ -82,6 +82,9 @@
       "text": "Texte",
       "file": "Fichier (max 5MB)"
     },
+    "placeholder": {
+      "noLimit": "Pas de limite"
+    },
     "labels": {
       "content": "Votre contenu secret:",
       "password": "Mot de passe:",

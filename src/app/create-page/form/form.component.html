@@ -112,7 +112,8 @@
           class="flex-2"
           roundedInput
           min="0"
-          value="0"
+          placeholder="{{'form.placeholder.noLimit' | transloco}}"
+          (input)="onLifetimeChange($event)"
         />
         <select
           formControlName="lifetimeType"
@@ -144,6 +145,9 @@
           [class.border-red-500]="secretForm.errors && secretFormSubmited"
           formControlName="usageLimit"
           roundedInput
+          placeholder="{{'form.placeholder.noLimit' | transloco}}"
+          (input)="onUsageLimitChange($event)"
+          min="0"
         />
         @if (
           secretForm.errors?.["lifetimeOrusageLimitRequired"] &&
